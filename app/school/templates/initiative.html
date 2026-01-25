@@ -1,0 +1,340 @@
+{% extends "index.html" %}
+
+{% block content %}
+<head>
+    <style>
+        :root {
+            --primary-color: #e7ac74; /* Swap with your main color */
+            --accent-color: #325caf;   /* Swap with your secondary color */
+            --text-light: #ffffff;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #16213e);
+            color: var(--text-light);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Marquee Effect for Events */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--primary-color);
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-content img {
+            height: 200px;
+            margin: 0 10px;
+            border-radius: 10px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Team Showcase - "The Hub" */
+        .team-hub-container {
+            position: relative;
+            height: 500px;
+            margin-top: 50px;
+        }
+
+        .team-line {
+            position: absolute;
+            background: var(--accent-color);
+            height: 2px;
+            transform-origin: left center;
+        }
+
+        /* The Container */
+        .team-hub-container {
+            position: relative;
+            height: 600px;
+            width: 600px; /* Best if square for a perfect circle */
+            margin: 100px auto;
+        }
+
+        /* Central Photo */
+        .center-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            border: 5px solid var(--accent-color);
+        }
+
+        /* The Secret Sauce: Mathematical Positioning */
+        .role-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            margin-left: -90px; /* Half of width to truly center */
+            margin-top: -30px;  /* Half of approx height */
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        /* We use translate(x, y) where:
+        x = radius * cos(angle)
+        y = radius * sin(angle)
+        Radius is set to 250px here.
+        */
+
+        .member-1 { transform: rotate(0deg) translate(250px) rotate(0deg); }
+        .member-2 { transform: rotate(40deg) translate(250px) rotate(-40deg); }
+        .member-3 { transform: rotate(80deg) translate(250px) rotate(-80deg); }
+        .member-4 { transform: rotate(120deg) translate(250px) rotate(-120deg); }
+        .member-5 { transform: rotate(160deg) translate(250px) rotate(-160deg); }
+        .member-6 { transform: rotate(200deg) translate(250px) rotate(-200deg); }
+        .member-7 { transform: rotate(240deg) translate(250px) rotate(-240deg); }
+        .member-8 { transform: rotate(280deg) translate(250px) rotate(-280deg); }
+        .member-9 { transform: rotate(320deg) translate(250px) rotate(-320deg); }
+
+        /* The second rotate cancels the rotation of the text so it stays upright! */
+        
+    </style>
+</head>
+
+<header class="hero-section">
+    <div class="container">
+        <h1 class="display-3 fw-bold">جيل واعٍ لعالم متغير</h1>
+        <p class="lead mt-3">نبني جيلاً واعياً قادر على مواجهة التحديات المستقبلية بفعالية</p>
+    </div>
+</header>
+
+<section class="container py-5">
+    <h2 class="text-center mb-5" style="color: #e7ac74;">الندوات</h2>
+    <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/science.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة رفع الوعي العلمي و توظيف العلوم المختلفة</h5>
+                        <p style="color: #325caf;">ندوة علمية تهدف الى رفع الوعي العلمي بكيفية توظيف المواد العلمية و الاستفادة منها في حياتنا العملية</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/relgion.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة رفع الوعي بالقيم الاخلاقية و السلوكيات الايجابية</h5>
+                        <p style="color: #325caf;">ندوة اخلاقية تهدف الى تحسين من سلوك الطلاب و اخلاقياتهم لمواجهة السلوكيات السلبية التي تتمثل في الألفاظ المسيئة و التدخيت و غيرها و التي تنتشر انتشارا ملحوظ في المجتمع المدرسي</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/health.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة رفع الوعي بالتغيرات الطارئة في مرحلة المراهقة</h5>
+                        <p style="color: #325caf;">تهدف هذه الندوة الى توعية الطلاب بالتغيرات النفسية و الفسيولوجية المختلفة الحادثة لهم في فترة المراهقة و كيفية التعامل معها بحكمة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/military.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة رفع الوعي بالتحديات التي تواجه الامن القومي</h5>
+                        <p style="color: #325caf;">تهدف هذه الندوة الى توعية الطلاب بأساليب الحروب الجديدة و التي يمكن ان تنهي حربا بدون ان ترفع سلاحا بستخدام الشائعات و الفتن و هو ما يقصد به حروب الجيل الرابع!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/food.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة اساليب التغذية السليمة</h5>
+                        <p style="color: #325caf;">تهدف هذه الندوة الى توعية الطلاب بأهمية التغذية السليمة و كيفية تحقيقها و تأثيرها الكبير جدا على حياتنا</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/alsha3at.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة رفع وعي الطلاب بكيفية مواجهة الشائعات</h5>
+                        <p style="color: #325caf;">تهدف هذه الندوة الى توعية الطلاب بأهمية التأكد من مصدر المعلومة قبل تصديقها حيث ان الشائعات لهادور كبير و تاريخ عريق في هدم الامم و تدهورها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/quota.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة عن القدوة الحسنة</h5>
+                        <p style="color: #325caf;">تهدف هذه الندوة الى توضيح اهمية اتخاذ قدوة حسنة و اتباعها في حياتنا و الاستفادة من خبراتها و الاستماع الي نصايحها و حكمها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/self-learning.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة عن التعلم الذاتي و الذكاء الاصطناعي</h5>
+                        <p style="color: #325caf;">تهجف هذه الندوة الى توضيح قوة و فعالية التعلم الذاتي و كيفية تكوين شخصية طلابية قادرة على البحث عن المعلومات و التعلم بمفردها خصتا في ظل ظهور الذكاء الاصطناعي</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/sports.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة قصة نجاح بطل رياضي</h5>
+                        <p style="color: #325caf;">تتحدث هذه الندوة عن اهمية الرياضة و العزيمة في تحقيق الاهداف و الاصرار و الخطوات الصحيحة التي تجعل منك بطل قصتك</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/GEM.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة المتحف المصري الكبير</h5>
+                        <p style="color: #325caf;">ندوة عن عظمة بناء المتحف ابمصري الكبير و تصميمه الفريد الذي يجعله ايقونة اثرية تضم اندر و اقدم اثار العالم و تطل بطريقة ساحرة على احدى عجائب الدنيا</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="{{url_for('school.static', filename='media/cultural.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #e7ac74;">ندوة عن دائرة الادمان و اضرار التدخين</h5>
+                        <p style="color: #325caf;">الادمان هو التمسك بعادة قد تكون حسنة و قد تكون سيئة, من ضمن العادات السيئة عادة التدخين و التي دمر صحة المجتمع و تجعل الطلاب غير نشطين و غير قادرين على التعلم او الانتاج</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="py-5 bg-light">
+    <h2 class="text-center mb-4" style="color: #e7ac74;">الفعاليات و الأحتفاليات</h2>
+    
+    <p class="text-center fw-bold" style="color: #325caf;">أيفينت سفراء الوعي</p>
+    <div class="marquee-container mb-4">
+        <div class="marquee-content">
+            <img src="{{url_for('school.static', filename='media/abdelrahman.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/adbelrahman2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/fady2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/fady2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/fady.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/fady2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/mohamed2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/mohamed2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/mohamed.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/mohamed2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/opaida.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/saifagamy.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/seifeslam.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/seifeslam2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/seifeslam.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/seifeslam2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/ziad.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/ziad2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yousef.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yousef2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia2.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia3.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia4.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia5.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia6.jpg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/yahia7.jpg')}}" alt="Event Image">
+        </div>
+    </div>
+
+    <p class="text-center fw-bold" style="color: #325caf;">أحتفالية اليوم العالمي لذوي الهمم</p>
+    <div class="marquee-container">
+        <div class="marquee-content" style="animation-direction: reverse;">
+            <img src="{{url_for('school.static', filename='media/zwy1.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy2.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy3.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy4.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy5.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy6.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy7.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy8.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy9.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy10.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy11.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy12.jpeg')}}" alt="Event Image">
+            <img src="{{url_for('school.static', filename='media/zwy13.jpeg')}}" alt="Event Image">
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <h2 class="text-center mb-5" style="color: #e7ac74;">المعسكرات</h2>
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <div class="p-5 bg-accent text-white rounded-3 shadow" style="background-color: var(--accent-color);">
+                <h3  style="color: #e7ac74;">المشاركة في معسكر تلوين و طلاء ملعب المدرسة</h3>
+                <p>شارك فريق المكتب التنفيذي بمشاركة بعض الطلاب و المعلمين في طلاء و تلوين ملعب كرة السلة و الكرة الطائرة بمدرسة جمال عبد الناصر الثانوية العسكرية </p>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="p-5 bg-dark text-white rounded-3 shadow">
+                <h3  style="color: #325caf;">معسكر سفراء الوعي</h3>
+                <p>معسكر تم تنفيذة بواسطة فريق المكتب التنفيذي و ضم ثلاثة ورش عمل اساسية ورشة عمل تنمية الركن الأخضر و ورشة عمل تصليح الأثاث المدرسي وورشة عمل اعادة تدوير الورق</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5 mb-5">
+    <h2 class="text-center mb-5" style="color: #e7ac74;">فريق المكتب التنفيذي</h2>
+    <div class="team-hub-container d-none d-md-block">
+        <img src="{{url_for('school.static', filename='media/team.jpeg')}}" alt="Our Team" class="center-photo">
+        
+        <div class="role-card member-1">
+            <h6>يوسف وسام-الدين</h6>
+            <small style="color: #325caf;">أمين المدرسة</small>
+        </div>
+        <div class="role-card member-2">
+            <h6>فادي عمر</h6>
+            <small style="color: #325caf;">أمين مساعد المدرسة</small>
+        </div>
+        <div class="role-card member-3">
+            <h6>سيف-الدين محمد</h6>
+            <small style="color: #325caf;">مقرر اللجنة العلمية</small>
+        </div>
+        <div class="role-card member-4">
+            <h6>عبد-الرحمن كمال</h6>
+            <small style="color: #325caf;">مقرر اللجنة الثقافية</small>
+        </div>
+        <div class="role-card member-5" >
+            <h6>يحيى اشرف</h6>
+            <small style="color: #325caf;">مقرر اللجنة الأجتماعية</small>
+        </div>
+        <div class="role-card member-6">
+            <h6>زياد محمد</h6>
+            <small style="color: #325caf;">مقرر اللجنة الفنية</small>
+        </div>
+        <div class="role-card member-7">
+            <h6>محمد علي</h6>
+            <small style="color: #325caf;">مقرر اللجنةالرياضية الكشفية</small>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center py-4 border-top">
+    <p>&copy; 2026 Wa3eni Built with Passion.</p>
+</footer>
+{% endblock %}

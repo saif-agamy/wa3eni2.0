@@ -1,0 +1,108 @@
+/* Import a modern font for Arabic/English */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif; /* Modern Arabic font */
+}
+
+/* Glassmorphism Effect */
+.navbar {
+    background: rgba(50, 92, 175, 0.95);
+    backdrop-filter: blur(10px); /* Blurs content behind the navbar */
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(231, 172, 116, 0.2);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: #e7ac74 !important;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+/* Modern Link Hover (Underline effect) */
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #e7ac74;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: #e7ac74 !important;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 10px;
+    margin-top: 15px !important;
+}
+
+.dropdown-item {
+    color: #325caf !important;
+    border-radius: 8px;
+    transition: all 0.2s;
+    text-align: right; /* Align text for Arabic */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(231, 172, 116, 0.1) !important;
+    color: #d49a63 !important;
+    transform: translateX(-5px); /* Subtle slide effect */
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+/* Glowing Button */
+.btn-custom {
+    background-color: #e7ac74;
+    color: white !important;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(231, 172, 116, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #d49a63;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 172, 116, 0.4);
+}
+
+/* Adjustments for Arabic Layout */
+.navbar-nav {
+    direction: rtl;
+}
+
+.ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}

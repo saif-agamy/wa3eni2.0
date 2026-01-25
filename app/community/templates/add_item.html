@@ -1,0 +1,150 @@
+{% extends "index.html" %}
+
+{% block content %}
+<head>
+    <style>
+        :root {
+            --brand-blue: #325caf;
+            --brand-gold: #e7ac74;
+            --soft-bg: #f4f7f9;
+        }
+
+        body { background-color: var(--soft-bg); font-family: 'Inter', sans-serif; padding-top: 40px;}
+
+        .navbar { background-color: var(--brand-blue) !important; }
+
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px;
+        }
+
+        .form-label { font-weight: 600; color: #444; }
+
+        /* Custom Radio Styling */
+        .btn-check:checked + .btn-outline-primary {
+            background-color: var(--brand-blue);
+            border-color: var(--brand-blue);
+        }
+
+        .btn-check:checked + .btn-outline-warning {
+            background-color: var(--brand-gold);
+            border-color: var(--brand-gold);
+            color: white;
+        }
+
+        .submit-btn {
+            background-color: var(--brand-gold);
+            border: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #d6955a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 172, 116, 0.4);
+        }
+
+        .input-group-text { background-color: #f8f9fa; color: var(--brand-blue); }
+
+        .section-divider {
+            border-bottom: 2px solid #eee;
+            margin: 30px 0;
+            position: relative;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <div class="form-container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: var(--brand-blue);">بلغ عن مفقود</h2>
+            <p class="text-muted">قدم كل المعلومات المتوفرة عن الشيء المفقود</p>
+        </div>
+
+        <form action="{{url_for('community.add', id=current_user.id)}}" method="POST">
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <label class="form-label d-block mb-3">بتبلغ عن ايه؟</label>
+                    <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="reportType" id="lost" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary py-3 fw-bold" for="lost">
+                            <i class="bi bi-search me-2"></i>شيء مفقود
+                        </label>
+
+                        <input type="radio" class="btn-check" name="reportType" id="found" autocomplete="off">
+                        <label class="btn btn-outline-warning py-3 fw-bold" for="found">
+                            <i class="bi bi-hand-index-thumb me-2"></i>لقيت حاجة
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">اسم المفقود</label>
+                    <input name="name" type="text" class="form-control" placeholder="مثال : الة حاسبة">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">نوع المفقود</label>
+                    <select name="type" class="form-select">
+                        <option selected disabled>اختار نوع محدد</option>
+                        <option>موبايل/تابلت المدرسة</option>
+                        <option>شنطة/لانش بوكس</option>
+                        <option>ادوات مدرسية</option>
+                        <option>متعلقات خاصة</option>
+                        <option>شيء أخر</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">لقيت/ضاع منك امتى؟</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                        <input name="date" type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">لقيته فين؟</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                        <input name="place" type="text" class="form-control" placeholder="مبنى, فصل تعليمي, مكتب, الحمام, الحوش">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">وصف دقيق عن الحاجة</label>
+                    <textarea name="description" class="form-control" rows="4" placeholder="اوصف علامات مميزة , لون , شكل , موديل , حجم"></textarea>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="mt-5 text-center">
+                <div class="form-check d-inline-block text-start mb-4">
+                    <input class="form-check-input" type="checkbox" id="terms">
+                    <label class="form-check-label small" for="terms">
+                        أنا اقرر ان المعلومات التي وضعتها دقيقة و حقيقية
+                    </label>
+                </div>
+                <br>
+                <button type="submit" class="btn submit-btn btn-lg rounded-pill shadow-sm">
+                    تسليم البلاغ <i class="bi bi-send-fill ms-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer class="text-center pb-5 text-muted small">
+    &copy; 2026 REUNITE Portal. All rights reserved.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

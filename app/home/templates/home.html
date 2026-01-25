@@ -1,0 +1,353 @@
+{% extends "index.html" %}
+
+{% block content %}
+<head>
+    <link href="{{url_for('home.static', filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<section id="main">
+    <div class="hero-section" >
+        <div class="hero-slide bg-1 active">
+            <div class="hero-content">
+                <div>
+                    <h2 class="mt-3">مدرسة جمال عبد الناصر الثانوية العسكرية</h2>
+                    <p class="mt-3"> استكشف و اعرف كل جديد عن المدرسة أول بأول من خلال المنصة</p>
+                    <button class="hero-btn mt-3">أسكتشف</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide bg-2">
+            <div class="hero-content">
+                <div>
+                    <h2 class="mt-3">مبادرة جيل واع لعالم متغير</h2>
+                    <p class="mt-3"> مبادرة تهدف الى رفع وعي الطلاب في المجالات المختلفة بحلول ذكية و معاصرة تضمن اعداد جيل قيادي قادر على التعالم مع المواقف المختلفة بفعالية </p>
+                    <button class="hero-btn mt-3">أستكشف</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide bg-3">
+            <div class="hero-content">
+                <div>
+                    <h2 class="mt-3">المجتمع الطلابي</h2>
+                    <p class="mt-3">انضم الى عالم رقمي متكامل يعمل بجهود الطلاب يتكون من عده منصات مختلفة تتيح لك التواصل الفعال مع المعلمين و الطلاب  و المنظمين</p>
+                    <button class="hero-btn mt-3">أستكشف</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+        </div>
+
+        <div class="carousel-controls">
+            <button class="control-btn" id="prevBtn">‹</button>
+            <button class="control-btn" id="nextBtn">›</button>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="school-feature-section py-5" id="school">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-7 reveal">
+                <div class="image-container">
+                    <div class="experience-badge">
+                        <span class="number">+50</span>
+                        <span class="text" style="color: #e7ac74;">عاما<br>من التميز</span>
+                    </div>
+                    <img src="{{url_for('home.static', filename='media/school.png')}}" alt="Our School" class="img-main">
+                    <div class="image-accent"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 reveal delay-1">
+                <div class="content-box" dir="rtl">
+                    <div class="section-tag" style="color: #e7ac74;" dir="rtl">الأسكندرية - فيكتوريا</div>
+                    <h2 class="section-title" dir="rtl">مدرسة جمال عبد الناصر <span style="color: #e7ac74;">الثانوية العسكرية</span></h2>
+                    <p class="section-description" dir="rtl">
+                        
+                    </p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item" dir="rtl">
+                            <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+                            <div>
+                                <h5>اكثر من 2500 طالب</h5>
+                                <p>تضم مدرسة جمال عبد الناصر 83 فصلا دراسيا يحوي اكثر من 2500 طالب مما يشكل مجتمعا كثيفا من الطلاب</p>
+                            </div>
+                        </div>
+                        <div class="feature-item" dir="rtl">
+                            <div class="icon-wrap"><i class="bi bi-trophy"></i></div>
+                            <div>
+                                <h5>نشارك في جميع المسابقات</h5>
+                                <p style="font-size: small;">شاركت مدرسة جمال عبد الناصر الثانوية العسكرية في مسابقات كثيرة على مستوى الادارة و المحافظة و الجمهورية و  دائما يلمع اسمها في المراكز الاولى مما يبعث الفخر في روح طلابها</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="{{url_for('school.school')}}" class="btn-custom-2">
+                        أستكشف المدرسة <i class="bi bi-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="awareness-modern py-5" id="initiative" dir="rtl">
+    <div class="container">
+        <div class="row mb-5 align-items-end reveal">
+            <div class="col-lg-7">
+                <span class="text-orange fw-bold text-uppercase ls-2" style="color: #e7ac74;">مبادرة توعوية</span>
+                <h2 class="display-4 fw-bold mt-2" style="color: #e7ac74;">جيل<span class="text-outline" style="color: white;"> واعٍ </span>لعالم متغير</h2>
+            </div>
+            <div class="col-lg-5">
+                <p class=" border-start border-warning border-3 ps-4 mb-2" style="color: white;">
+                    رؤيتنا هي بناء جيل واعٍ طموح قادر على النقد و التحليل و التكيف الأيجابي مع التغيرات العالمية و المحلية , مدرك ما له من حقوق و ما عليه من واجبات , قادر على مواجهة التحديات المستقبلية
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4 reveal delay-1">
+                <div class="initiative-card">
+                    <div class="card-icon"><i class="bi bi-display"></i></div>
+                    <h3>التوعية الرقمية</h3>
+                    <p>توعية الطلاب رقميا بمخاطر التكنولوجة و الأستخدام الخاطئ و المفرط لها بالأضافة الى كيفية حماية بياناتهم من الاختراق</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal delay-2">
+                <div class="initiative-card active" style="background-color: #e7ac74;">
+                    <div class="card-icon" style="color: #325caf;"><i class="bi bi-tree"></i></div>
+                    <h3 style="color: #325caf;">التوعية البيئية</h3>
+                    <p style="color: white;">تنمية الطبيعة حولنا و الحفاظ عليها اصبحت مسؤولية مجتمعية تشمل جميع فئات المجتمع لذالك توعية الطلاب بالأهمية البيئية احد اولوياتنا</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal delay-3">
+                <div class="initiative-card">
+                    <div class="card-icon"><i class="bi bi-people"></i></div>
+                    <h3>التوعية الأجتماعية</h3>
+                    <p>مهارات التواصل و العمل الجماعي و الريادة مهارات اساسية في سوق العمل و مجالات الحياة المختلفة و لهذا توعية الطلاب اجتماعيا تعد واحدة من اهم الأعمدة الي ترتكز عليها مبادرتنا</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <a href="{{url_for('school.initiative')}}" class="btn btn-custom mt-3">
+            أستكشف المبادرة <i class="bi bi-arrow-left"></i>
+        </a>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="community-ecosystem py-5 bg-light" id="community" dir="rtl">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <h6 class="fw-bold text-uppercase ls-2" style="color: #e7ac74;">المجتمع الطلابي</h6>
+            <h2 class="display-5 fw-bold navy-text mb-3">اكتشف منصات المجتمع الرقمي الطلابي</h2>
+            <div class="mx-auto mb-4" style="height: 3px; width: 50px; background-color: #e7ac74;"></div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 reveal delay-1">
+                <div class="eco-card h-100 p-4 shadow-sm bg-white border-0">
+                    <div class="eco-icon bg-soft-blue mb-4">
+                        <i class="bi bi-journal-richtext"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #e7ac74;">المنتدى الطلابي</h4>
+                    <p class="text-muted small">أسأل , شارك , استكشف في المنتدى الطلابي تقدر تتواصل مع زملائك و معلمينك اونلاين بكل سهولة</p>
+                    <a href="{{url_for('community.blog')}}" class="eco-btn mt-auto" style="color: #e7ac74;">أقرأ المنشورات<i class="bi bi-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-2">
+                <div class="eco-card h-100 p-4 shadow-sm bg-white border-0">
+                    <div class="eco-icon bg-soft-orange mb-4">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #e7ac74;">مواهب مدرستنا</h4>
+                    <p class="text-muted small">لو بتصنع مشغولات يدوية او عندك مشروع صغير تقدر تعرض منتجاتك دلوقتي على صفحة متجر المدرسة</p>
+                    <a href="#" class="eco-btn mt-auto" style="color: #e7ac74;">اذهب للتسوق<i class="bi bi-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-3">
+                <div class="eco-card h-100 p-4 shadow-sm bg-white border-0 highlight-card">
+                    <div class="eco-icon bg-white mb-4">
+                        <i class="bi bi-stars text-orange"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #e7ac74;">المساعد الرقمي</h4>
+                    <p class="text-muted small">لو عندك اي سؤال او مجتاج مساعدة, مساعد وعيني الرقمي جاهز 24 ساعة لمساعدتك</p>
+                    <a href="{{url_for('chat_bot.chat')}}" class="eco-btn mt-auto" style="color: #e7ac74;">جربه دلوقتي<i class="bi bi-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 reveal delay-4">
+                <div class="eco-card h-100 p-4 shadow-sm bg-white border-0">
+                    <div class="eco-icon bg-soft-green mb-4">
+                        <i class="bi bi-search-heart"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #e7ac74;">المفقودات</h4>
+                    <p class="text-muted small">ضاعت منك حاجة؟ لقيت اداة او شيء مش عارف يخص مين في المدرسة؟ نزلها دلوقتي على صفحة المفقودات</p>
+                    <a href="#" class="eco-btn mt-auto" style="color: #e7ac74;">بلغ دلوقتي<i class="bi bi-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<footer class="footer-section pt-5 pb-3" dir="rtl">
+    <div class="container">
+        <div class="row g-4">
+            
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-logo mb-4">
+                    <h4 class="text-white fw-bold">جمال عبد الناصر <span style="color: #e7ac74;">الثانوية العسكرية</span></h4>
+                </div>
+                <p class="footer-text mb-4">
+                    مدرسة تنمو بجهود أبنائها المتميزين موفرةً بدورها بيئة تعليمية تمنحهم قابلية للنجاح و الصعود
+                </p>
+                <div class="social-links d-flex gap-3">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="footer-heading">روابط</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#main">الرئيسية</a></li>
+                    <li><a href="#school">المدرسة</a></li>
+                    <li><a href="#initiative">المبادرة</a></li>
+                    <li><a href="#community">المجتمع</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5 class="footer-heading">الدعم</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="#">تواصل معنا</a></li>
+                    <li><a href="#">المفقودات</a></li>
+                    <li><a href="#">فريق العمل</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h5 class="footer-heading">تواصل معنا</h5>
+                <p class="small mb-2" style="color: white;"><i class="bi bi-geo-alt-fill me-2" style="color: #e7ac74;"></i>مصر , الأسكندرية , فكتوريا</p>
+                <p class="small mb-4" style="color: white;"><i class="bi bi-envelope-fill me-2" style="color: #e7ac74;"></i> wa3eni@gmail.com</p>
+                
+                <h6 class="text-white mb-3">اشترك معنا ليصلك كل جديد</h6>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control footer-input text-white" placeholder="Your Email">
+                    <button class="btn btn-orange" type="button">اشترك</button>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="copyright-text mb-0">
+                    © 2026 <span class="text-white fw-semibold">Gamal abdel nasser military secondry school</span> All Rights Reserved Built with Pride
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+    let autoPlayInterval;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 6000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+    });
+
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetAutoPlay();
+        });
+    });
+
+    startAutoPlay();
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Target all elements with the 'reveal' class
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+{% endblock %}
+

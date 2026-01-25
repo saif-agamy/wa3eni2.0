@@ -1,0 +1,177 @@
+{% extends "index.html" %}
+
+{% block content %}
+<head>
+    <style>
+        :root {
+            --brand-blue: #325caf;
+            --brand-gold: #e7ac74;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--dark);
+            padding-top: 84px;
+        }
+
+        /* Hero Image Showcase */
+        .school-showcase {
+            height: 60vh;
+            border-radius: 0 0 40px 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .carousel-item img {
+            height: 60vh;
+            object-fit: cover;
+            filter: brightness(70%);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            color: white;
+            z-index: 10;
+        }
+
+        /* Stats Section */
+        .stat-card {
+            border: none;
+            border-bottom: 4px solid var(--brand-gold);
+            transition: 0.3s;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brand-blue);
+        }
+
+        /* News Section */
+        .news-badge {
+            background-color: var(--brand-blue);
+            color: white;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+        }
+
+        .news-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fdfdfd;
+        }
+
+        .btn-gold {
+            background-color: var(--brand-gold);
+            color: white;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<div id="schoolGallery" class="carousel slide school-showcase shadow-lg mx-md-4" data-bs-ride="carousel">
+    <div class="showcase-overlay" dir="rtl" style="text-align: right; right:5%;"> 
+        <h1 class="display-4 fw-bold" style="color: #e7ac74;">نبني قواد المستقبل</h1>
+        <p class="lead">حيث يلتقي شغف الاكتشاف.. بذكاء التنفيذ</p>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{url_for('school.static', filename='media/school1.png')}}" class="d-block w-100" alt="Campus">
+        </div>
+        <div class="carousel-item">
+            <img src="{{url_for('school.static', filename='media/school2.png')}}" class="d-block w-100" alt="Library">
+        </div>
+    </div>
+</div>
+
+<section class="container my-5 py-4" dir="rtl">
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-md-4 col-sm-6">
+            <div class="card stat-card p-4 shadow-sm h-100">
+                <div class="stat-number">50+</div>
+                <div class="text-muted small fw-bold text-uppercase">عاماً من التميز</div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6">
+            <div class="card stat-card p-4 shadow-sm h-100">
+                <div class="stat-number">83+</div>
+                <div class="text-muted small fw-bold text-uppercase">فصلاً تعليمياً</div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-12">
+            <div class="card stat-card p-4 shadow-sm h-100">
+                <div class="stat-number">12+</div>
+                <div class="text-muted small fw-bold text-uppercase">مختبراً علمياً</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container my-5">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h1 class="text-uppercase fw-bold" style="color: var(--brand-gold)">أخبار</h1>
+            <h2 class="fw-bold">أخر الأخبار الجديد للمدرسة</h2>
+        </div>
+        
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card news-card shadow-sm h-100">
+                <img src="{{url_for('school.static', filename='media/new1.jpg')}}" class="card-img-top" alt="Science Fair">
+                <div class="card-body">
+                    <span class="news-badge mb-2 d-inline-block">خبر</span>
+                    <h4 dir="rtl" class="fw-bold">أنتهاء امتحانات الشهادة الأعدادية</h4>
+                    <p dir="rtl" class="text-muted small">تتقدم السيدة مديرة إدارة المدرسة د/ صباح محمود بالشكر والتقدير لكل من :
+                    - لجنة النظام والمراقبة بالمدرسة تحت قيادة أ/ سميرة جودة رئيسة لجنة النظام والمراقبة و أ/ جيهان مصطفى وكيلة اللجنة وجميع أعضاء لجنة النظام والمراقبة 
+                    - أعضاء هيئة التدريس الأفاضل
+                    -  قسم التطوير التكنولوجي  
+                    - جميع العاملين بالمدرسة 
+                    على المظهر المشرف وعلى التعاون والمجهود الكبير الذي بذله الجميع في كافة أعمال امتحانات الفصل الدراسي الأول للعام ٢٠٢٦/٢٠٢٥ والتي مرت بكل سلاسة ويسر على جميع طلاب المدرسة ما كان له بالغ الأثر على المنظومة ككل، 
+                    خالص التمنيات بدوام التوفيق والنجاح لجميع أعضاء أسرة مدرسة جمال عبد الناصر الثانوية العسكرية
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card news-card shadow-sm h-100">
+                <img src="{{url_for('school.static', filename='media/new2.jpg')}}" class="card-img-top" alt="Graduation">
+                <div class="card-body">
+                    <span class="news-badge mb-2 d-inline-block">خبر</span>
+                    <h5 class="fw-bold">أخر موعد لتسجيل أستمارة الثانوية العامة 2026</h5>
+                    <p class="text-muted small">لكل طلاب الثانوية العامة في مصر سارعو لتسجيل استمارة الثانوية بموعد اقصاه 5 فبراير برجاء الألتزام</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card news-card shadow-sm h-100">
+                <img src="{{url_for('school.static', filename='media/new3.jpg')}}" class="card-img-top" alt="Graduation">
+                <div class="card-body">
+                    <span class="news-badge mb-2 d-inline-block">خبر</span>
+                    <h5 class="fw-bold">أوائل الصفوف الأول و الثانوي الثانوي للفصل الدراسي الاول 2026/2025</h5>
+                    <p class="text-muted small">مدرسة جمال عبدالناصر الثانوية العسكرية ممثلة في السيدة مديرة إدارة المدرسة د/ صباح محمود والسيد القائد العسكري للمدرسة والسيد رئيس مجلس أمناء المدرسة المهندس/ عبد القادر السبكي ورئيسة لجنة النظام والمراقبة أ/ سميرة جودة، يتقدمون بخالص التهنئة لأوائل طلاب الصفين الأول الثانوي والثاني الثانوي للفصل الدراسي الأول من العام ٢٠٢٦/٢٠٢٥، آملين من المولى عز وجل دوام التوفيق والنجاح في كل ماهو قادم .. ألف مبروك</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark text-white py-5 mt-5">
+    <div class="container text-center">
+        <p class="opacity-50 small mb-0">© 2026 gamal abdel nasser hs, All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
