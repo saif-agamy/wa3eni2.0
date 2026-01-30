@@ -210,6 +210,262 @@
             backdrop-filter: blur(5px);
             z-index: 2;
         }
+
+        /* --- Executive Team Section - Command Edition --- */
+        /* --- Simpler Premium Team Section --- */
+        /* --- Advanced Premium Showcase --- */
+        :root {
+            --brand-blue: #325caf;
+            --brand-gold: #e7ac74;
+            --glass-white: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- Header & Layout --- */
+        .leadership-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f4f7ff 100%);
+            overflow: hidden;
+        }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .floating-text {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--brand-blue);
+            opacity: 0.03;
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 20px;
+        }
+
+        /* --- Cinematic Hero Photo --- */
+        .cinematic-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto 120px;
+            padding: 0 20px;
+        }
+
+        .main-photo-wrapper {
+            position: relative;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(50, 92, 175, 0.2);
+        }
+
+        .main-photo-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            transform: scale(1.05);
+            transition: transform 0.8s ease;
+        }
+
+        .main-photo-wrapper:hover img {
+            transform: scale(1);
+        }
+
+        /* Gold Ribbon Overlay */
+        .ribbon-overlay {
+            position: absolute;
+            bottom: 40px;
+            right: -10px;
+            background: var(--brand-gold);
+            color: white;
+            padding: 15px 40px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -10px 10px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        /* --- The Modern Offset Grid --- */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .executive-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            padding: 50px 30px;
+            border-radius: 40px;
+            border: 1px solid rgba(50, 92, 175, 0.08);
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .executive-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            padding: 2px; 
+            background: linear-gradient(135deg, var(--brand-gold), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .executive-card:hover {
+            transform: translateY(-20px);
+            background: white;
+            box-shadow: 0 30px 60px rgba(50, 92, 175, 0.1);
+        }
+
+        .executive-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Special Styling for specific cards to create "Offset" rhythm */
+        .offset-up { margin-top: -60px; }
+
+        .rank-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--brand-blue);
+            color: var(--brand-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(50, 92, 175, 0.2);
+        }
+
+        .name-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 10px;
+        }
+
+        .role-subtitle {
+            color: var(--brand-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .executive-grid { grid-template-columns: repeat(2, 1fr); }
+            .offset-up { margin-top: 0; }
+            .floating-text { font-size: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .executive-grid { grid-template-columns: 1fr; }
+            .main-photo-wrapper img { height: 350px; }
+        }
+        /* edit that */
+        /* --- The 2-3-2 Premium Layout --- */
+        .executive-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centers the rows */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .executive-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 35px;
+            border: 1px solid rgba(50, 92, 175, 0.1);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            /* Default width for the 3-item rows */
+            flex: 0 1 calc(33.333% - 30px); 
+            min-width: 300px;
+        }
+
+        /* Top Row: The Leaders (2 items) */
+        .executive-card.leader-rank {
+            flex: 0 1 calc(45% - 30px); /* Makes them wider */
+            border-top: 5px solid var(--brand-gold);
+            background: linear-gradient(to bottom, #ffffff, #f9faff);
+        }
+
+        .executive-card.leader-rank .name-title {
+            font-size: 1.6rem;
+        }
+
+        /* Hover Effects */
+        .executive-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(50, 92, 175, 0.15);
+            border-color: var(--brand-gold);
+        }
+
+        .rank-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--brand-blue);
+            color: var(--brand-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.4rem;
+        }
+
+        .name-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            margin-bottom: 8px;
+        }
+
+        .role-subtitle {
+            color: var(--brand-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        /* Tablet/Mobile logic */
+        @media (max-width: 992px) {
+            .executive-card {
+                flex: 0 1 calc(50% - 30px); /* 2 per row on tablets */
+            }
+            .executive-card.leader-rank {
+                flex: 0 1 calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .executive-grid { gap: 20px; }
+            .executive-card {
+                flex: 0 1 100%; /* 1 per row on phones */
+            }
+        }
     </style>
 </head>
 
@@ -655,40 +911,63 @@
     </div>
 </section>
 
-<section class="container py-5 mb-5">
-    <h2 class="text-center mb-5" style="color: #e7ac74;">فريق المكتب التنفيذي</h2>
-    <div class="team-hub-container d-none d-md-block">
-        <img src="{{url_for('school.static', filename='media/team.jpeg')}}" alt="Our Team" class="center-photo">
-        
-        <div class="role-card member-1">
-            <h6>يوسف وسام-الدين</h6>
-            <small style="color: #325caf;">أمين المدرسة</small>
-        </div>
-        <div class="role-card member-2">
-            <h6>فادي عمر</h6>
-            <small style="color: #325caf;">أمين مساعد المدرسة</small>
-        </div>
-        <div class="role-card member-3">
-            <h6>سيف-الدين محمد</h6>
-            <small style="color: #325caf;">مقرر اللجنة العلمية</small>
-        </div>
-        <div class="role-card member-4">
-            <h6>عبد-الرحمن كمال</h6>
-            <small style="color: #325caf;">مقرر اللجنة الثقافية</small>
-        </div>
-        <div class="role-card member-5" >
-            <h6>يحيى اشرف</h6>
-            <small style="color: #325caf;">مقرر اللجنة الأجتماعية</small>
-        </div>
-        <div class="role-card member-6">
-            <h6>زياد محمد</h6>
-            <small style="color: #325caf;">مقرر اللجنة الفنية</small>
-        </div>
-        <div class="role-card member-7">
-            <h6>محمد علي</h6>
-            <small style="color: #325caf;">مقرر اللجنةالرياضية الكشفية</small>
+<section class="leadership-section" dir="rtl">
+    <div class="section-header">
+        <div class="floating-text">LEADERSHIP</div>
+        <h6 class="fw-bold mb-2" style="color: var(--brand-gold)">اتحاد الطلاب</h6>
+        <h2 class="display-4 fw-bold" style="color: var(--brand-blue)">المكتب التنفيذي</h2>
+    </div>
+
+    <div class="cinematic-container">
+        <div class="main-photo-wrapper">
+            <div class="ribbon-overlay">القادة المبدعون ٢٠٢٦</div>
+            <img src="{{url_for('school.static', filename='media/team.jpeg')}}" alt="Official School Team">
         </div>
     </div>
+
+    <div class="executive-grid" dir="rtl">
+    <div class="executive-card leader-rank">
+        <div class="rank-icon"><i class="fas fa-star"></i></div>
+        <h3 class="name-title">يوسف وسام-الدين</h3>
+        <p class="role-subtitle">أمين المدرسة</p>
+    </div>
+
+    <div class="executive-card leader-rank">
+        <div class="rank-icon"><i class="fas fa-star"></i></div>
+        <h3 class="name-title">فادي عمر</h3>
+        <p class="role-subtitle">أمين مساعد المدرسة</p>
+    </div>
+
+    <div class="executive-card">
+        <div class="rank-icon"><i class="fas fa-flask"></i></div>
+        <h3 class="name-title">سيف الدين محمد</h3>
+        <p class="role-subtitle">مقرر اللجنة العلمية</p>
+    </div>
+
+    <div class="executive-card">
+        <div class="rank-icon"><i class="fas fa-book"></i></div>
+        <h3 class="name-title">عبد الرحمن كمال</h3>
+        <p class="role-subtitle">مقرر اللجنة الثقافية الدينية</p>
+    </div>
+
+    <div class="executive-card">
+        <div class="rank-icon"><i class="fas fa-users"></i></div>
+        <h3 class="name-title">يحيى اشرف</h3>
+        <p class="role-subtitle">مقرر اللجنة الاجتماعية</p>
+    </div>
+
+    <div class="executive-card">
+        <div class="rank-icon"><i class="fas fa-palette"></i></div>
+        <h3 class="name-title">زياد محمد</h3>
+        <p class="role-subtitle">مقرر اللجنة الفنية</p>
+    </div>
+
+    <div class="executive-card">
+        <div class="rank-icon"><i class="fas fa-medal"></i></div>
+        <h3 class="name-title">محمد علي</h3>
+        <p class="role-subtitle">مقرر اللجنة الرياضية الكشفية</p>
+    </div>
+</div>
 </section>
 
 <footer class="text-center py-4 border-top">

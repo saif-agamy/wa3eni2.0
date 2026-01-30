@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from app.forms import UserForm, LoginForm
 from app.models import User
 from app.extensions import db
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required, current_user
 
 auth_b = Blueprint(
     'auth',
@@ -22,11 +22,27 @@ def sign():
             role=form.role.data,
             from_school=form.from_school.data,
             grade=form.grade.data,
-            icon = 'student.png'
         )
 
-        
-        if form.role.data == 'ولي أمر':
+        if form.role.data == 'المدير':
+            user.icon = 'head-teacher.png'
+        elif form.role.data == 'قائد عسكري':
+            user.icon = 'army-leader.png'
+        elif form.role.data == 'طالب عسكرية':
+            user.icon = 'army-student.png'
+        elif form.role.data == 'أخصائي':
+            user.icon = 'specialist.png'
+        elif form.role.data == 'أمين':
+            user.icon = 'trustee.png'
+        elif form.role.data == 'أمين مساعد':
+            user.icon = 'helper-trustee.png'
+        elif form.role.data == 'مقرر لجنة':
+            user.icon = 'reporteur.png'
+        elif form.role.data == 'مدرب':
+            user.icon = 'trainer.png'
+        elif form.role.data == 'معلم':
+            user.icon = 'teacher.png'
+        elif form.role.data == 'ولي أمر': 
             user.icon = 'parent.png'
         else :
             user.icon = 'student.png'
@@ -53,12 +69,38 @@ def login():
 
     return render_template('login.html', form=form)
 
+@login_required
 @auth_b.route('/auth/logout/')
 def logout():
     logout_user()
     return redirect(url_for('home.home'))
 
+@login_required
 @auth_b.route('/auth/profile/<int:id>/')
 def profile(id):
     user = User.query.get_or_404(id)
     return render_template('profile.html', user=user)
+
+@login_required
+@auth_b.route('/auth/user/<int:id>/set_admin/')
+def set_admin(id):
+    if current_user.is_admin :
+        user = User.query.get_or_404(id)
+        user.set_admin()
+        db.session.commit()
+
+        return redirect(url_for('admin.admin'))
+    
+    else : return redirect(url_for('home.home'))
+
+@login_required
+@auth_b.route('/auth/user/<int:id>/verify/')
+def verify(id):
+    if current_user.is_admin :
+        user = User.query.get_or_404(id)
+        user.verify()
+        db.session.commit()
+
+        return redirect(url_for('admin.admin'))
+    
+    else : return redirect(url_for('home.home'))

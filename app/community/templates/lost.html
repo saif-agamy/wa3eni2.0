@@ -59,6 +59,12 @@
     <div class="container">
         <h1 class="display-5 fw-bold" style="color: #e7ac74;">مركز المفقودات</h1>
         <p class="lead opacity-75">ساعد زمايلك يوصلو للي ضايع منهم</p>
+        
+        <div class="mt-4">
+            <a href="{{url_for('community.add', id=current_user.id)}}" class="btn btn-gold btn-lg px-4 fw-bold shadow-sm">
+                <i class="bi bi-plus-circle-fill me-2"></i>إضافة بلاغ جديد
+            </a>
+        </div>
     </div>
 </header>
 
@@ -70,20 +76,15 @@
             <div class="row g-3">
                 {% for lost in losts %}
                 <div class="col-12">
-                    <div class="card item-card shadow-sm">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="flex-shrink-0">
-                                <div class="bg-light p-3 rounded text-center" style="width: 80px;">
-                                    <i class="bi bi-laptop fs-2 text-muted"></i>
-                                </div>
+                    <div class="card item-card shadow-sm border-top border-3 border-danger">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title fw-bold mb-0">{{lost.name}}</h5>
+                                <span class="badge badge-lost">Lost</span>
                             </div>
-                            <div class="flex-grow-1 ms-3">
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="mb-1 fw-bold">{{lost.name}}</h5>
-                                    <span class="badge badge-lost">Lost</span>
-                                </div>
-                                <p class="small text-muted mb-2"><i class="bi bi-geo-alt"></i> {{lost.place}} • <i class="bi bi-calendar3"></i> {{ lost.date.strftime('%b %d') }} &bull; {{ lost.date.strftime('%I:%M %p') }}</p>
-                                <button class="btn btn-sm btn-outline-primary py-0">{{lost.discription}}</button>
+                            <p class="card-text text-muted small">{{lost.place}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="small fw-bold text-primary"><i class="bi bi-clock-history"></i>{{ lost.date.strftime('%b %d') }} &bull; {{ lost.date.strftime('%I:%M %p') }}</span>
                             </div>
                         </div>
                     </div>
@@ -107,7 +108,7 @@
                             </div>
                             <p class="card-text text-muted small">{{found.place}}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="small fw-bold text-primary"><i class="bi bi-clock-history"></i>{{ lost.date.strftime('%b %d') }} &bull; {{ lost.date.strftime('%I:%M %p') }}</span>
+                                <span class="small fw-bold text-primary"><i class="bi bi-clock-history"></i>{{ found.date.strftime('%b %d') }} &bull; {{ found.date.strftime('%I:%M %p') }}</span>
                             </div>
                         </div>
                     </div>

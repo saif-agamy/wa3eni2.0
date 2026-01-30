@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     grade = db.Column(db.Integer, nullable=False)
     verified = db.Column(db.Boolean(), nullable=False, default=False)
     skill = db.Column(db.String(80), nullable=False, default='None')
+    # You must add this manually!
+    is_admin = db.Column(db.Boolean, default=False)
 
     #handling methods
     def set_password(self, password):
@@ -23,6 +25,24 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password_hashed, password)
+    
+    def verify(self):
+        if self.verified :
+            self.verified = False
+        else :
+            self.verified = True 
+
+    def set_admin(self):
+        if self.is_admin :
+            self.is_admin = False
+        else :
+            self.is_admin = True
+
+    def ban(self):
+        if self.is_active:
+            self.is_active = False
+        else :
+            self.is_active = True
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

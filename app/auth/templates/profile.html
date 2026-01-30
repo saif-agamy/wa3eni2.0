@@ -85,7 +85,7 @@
 <div class="full-page-container" dir="rtl">
     <div class="profile-wrapper">
         
-        <img src="{{url_for('auth.static', filename='media/'+user.icon)}}" alt="Student Profile" class="rounded-profile-img">
+        <img src="{% if user.verified %}{{url_for('auth.static', filename='media/'+user.icon)}}{% else %}{{url_for('auth.static', filename='media/student.png')}}{% endif %}" alt="Student Profile" class="rounded-profile-img">
 
         <div class="text-center mb-4">
             <h1 class="display-4 fw-bold mb-0 text-primary">{{user.username}}</h1>
@@ -99,7 +99,7 @@
             </div>
             <div class="data-item">
                 <span class="label">دور</span>
-                <div class="value">{{user.role}}</div>
+                <div class="value">{% if user.verified %}{{user.role}}{% else %}طالب{% endif %}</div>
             </div>
             <div class="data-item">
                 <span class="label">مهارتك</span>

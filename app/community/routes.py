@@ -4,7 +4,7 @@ from app.forms import PostForm
 from app.models import Post,Lost,User
 from datetime import datetime
 from flask import jsonify
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 community_b = Blueprint(
     "community",
@@ -14,6 +14,7 @@ community_b = Blueprint(
     static_url_path="/community/static"
 )
 
+@login_required
 @community_b.route("/community/")
 def blog():
     posts = Post.query.all()
@@ -23,12 +24,14 @@ def blog():
 
     return render_template('blog.html', users_posts=users_posts)
 
+@login_required
 @community_b.route("/community/post/<int:id>/")
 def post(id):
     post = Post.query.get_or_404(id)
     user = User.query.get(post.author_id)
     return render_template('post.html', post=post, user=user)
 
+@login_required
 @community_b.route("/community/share/<int:id>/", methods=['GET','POST'])
 def share(id):
     form = PostForm()
@@ -47,22 +50,25 @@ def share(id):
 
     return render_template('create_post.html', form=form)
 
+@login_required
 @community_b.route("/community/post/<int:id>/like/", methods=['GET','POST'])
 def Like(id):
     post = Post.query.get_or_404(id)
     
-
+@login_required
 @community_b.route("/community/post/<int:id>/comment/", methods=['GET','POST'])
 def comment(id):
     pass
 
+@login_required
 @community_b.route('/community/lost/')
 def lost():
-    losts = Lost.query.filter_by(status='on').all()
-    founds = Lost.query.filter_by(status='off').all()
+    losts = Lost.query.filter_by(status='lost').all()
+    founds = Lost.query.filter_by(status='found').all()
 
     return render_template('lost.html', losts=losts, founds=founds)
 
+@login_required
 @community_b.route('/community/lost/add/<int:id>/', methods=['GET','POST'])
 def add(id):
     if request.method == 'POST':
@@ -88,39 +94,31 @@ def add(id):
 
     return render_template('add_item.html')
 
+@login_required
 @community_b.route('/community/delete/<int:id>/', methods=['GET','POST'])
 def delete(id):
     user = current_user
     post = Post.query.get_or_404(id)
 
-    if user.id == post.author_id:
+    if user.id == post.author_id or current_user.is_admin:
         db.session.delete(post)
         db.session.commit()
 
         return redirect(url_for('community.blog'))
     
-# @community_b.route('/community/post/<int:id>/like/', methods=['POST'])
-# def like_post(id):
-#     post = Post.query.get_or_404(id)
-#     user_id = current_user.id
-    
-#     # Ensure likes is treated as a list (standard for JSON columns)
-#     # If using a String column, you'd need json.loads(post.likes)
-#     likes_list = list(post.likes) if post.likes else []
+    else :
+        return redirect(url_for('home.home'))
 
-#     if user_id in likes_list:
-#         # Already liked, so UNLIKE
-#         likes_list.remove(user_id)
-#         # Save back to DB
-#         post.likes = likes_list
-#         db.session.commit()
-#         return redirect(url_for('community.blog'))
-#     else:
-#         # Not liked, so LIKE
-#         likes_list.append(user_id)
-#         # Save back to DB
-#         post.likes = likes_list
-#         db.session.commit()
-#         return redirect(url_for('community.blog'))
+@login_required
+@community_b.route('/community/lost/delete//<int:id>/', methods=['GET','POST'])
+def delete_item(id):
+    if current_user.is_admin:
+        lost = Lost.query.get(id)
 
+        db.session.delete(lost)
+        db.session.commit()
+
+        return redirect(url_for('admin.admin'))
     
+    else :
+        return redirect(url_for('home.home'))

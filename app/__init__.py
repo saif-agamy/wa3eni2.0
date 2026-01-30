@@ -17,12 +17,14 @@ def create_app():
     from app.community.routes import community_b
     from app.auth.routes import auth_b
     from app.chat_bot.routes import chat_bot_b
+    from app.admin.routes import admin_b
     
     app.register_blueprint(home_b)
     app.register_blueprint(school_b)
     app.register_blueprint(community_b)
     app.register_blueprint(auth_b)
     app.register_blueprint(chat_bot_b)
+    app.register_blueprint(admin_b)
 
     #SQL server handling
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path.join(BASE_DIR,'db','site.db')}'

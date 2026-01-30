@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 import google.generativeai as genai
+from flask_login import login_required
 
 chat_bot_b = Blueprint(
     'chat_bot',
@@ -13,6 +14,7 @@ chat_bot_b = Blueprint(
 genai.configure(api_key='AIzaSyCOQfHuibT5wMs9tko8KwomWVwBqzw_4oI')
 model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
+@login_required
 @chat_bot_b.route('/chatbot/', methods=['GET','POST'])
 def chat():
     if request.method == 'POST':

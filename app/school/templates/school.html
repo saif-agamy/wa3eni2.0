@@ -2,85 +2,146 @@
 
 {% block content %}
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-blue: #325caf;
             --brand-gold: #e7ac74;
+            --brand-gold-light: rgba(231, 172, 116, 0.15);
             --dark: #1a1a1a;
+            --light-gray: #f8f9fa;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Noto Kufi Arabic', 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
             color: var(--dark);
-            padding-top: 84px;
+            padding-top: 70px;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        /* Hero Image Showcase */
+        /* --- Hero Section --- */
         .school-showcase {
-            height: 60vh;
+            height: 70vh;
             border-radius: 0 0 40px 40px;
             overflow: hidden;
             position: relative;
         }
         
         .carousel-item img {
-            height: 60vh;
+            height: 70vh;
             object-fit: cover;
-            filter: brightness(70%);
+            filter: brightness(50%);
         }
 
         .showcase-overlay {
             position: absolute;
-            bottom: 10%;
-            left: 5%;
+            top: 50%;
+            right: 8%;
+            transform: translateY(-50%);
             color: white;
             z-index: 10;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
+            padding: 40px;
+            border-right: 8px solid var(--brand-gold);
+            border-radius: 20px;
+            transition: all 0.4s ease;
         }
 
-        /* Stats Section */
+        /* --- Stats Section --- */
         .stat-card {
             border: none;
-            border-bottom: 4px solid var(--brand-gold);
-            transition: 0.3s;
+            background: white;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 20;
+            margin-bottom: 10px;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--brand-blue);
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(var(--brand-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* News Section */
-        .news-badge {
-            background-color: var(--brand-blue);
-            color: white;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            padding: 5px 12px;
-            border-radius: 50px;
-        }
-
+        /* --- News Section --- */
         .news-card {
             border: none;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
-            background: #fdfdfd;
+            background: white;
+            transition: 0.3s ease;
         }
 
-        .btn-gold {
-            background-color: var(--brand-gold);
-            color: white;
-            border-radius: 50px;
-            padding: 10px 25px;
-            font-weight: 600;
+        .news-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.8;
+        }
+
+        /* =============================================
+        MOBILE OPTIMIZATIONS (The "Magic" Sauce)
+        ============================================= */
+        @media (max-width: 768px) {
+            .school-showcase {
+                height: 60vh;
+                border-radius: 0 0 30px 30px;
+                margin-bottom: 20px;
+            }
+
+            .carousel-item img {
+                height: 60vh;
+            }
+
+            .showcase-overlay {
+                right: 5%;
+                left: 5%;
+                top: auto;
+                bottom: 10%;
+                transform: none;
+                padding: 20px;
+                text-align: center;
+                border-right: none;
+                border-bottom: 5px solid var(--brand-gold);
+                max-width: 90%;
+            }
+
+            .showcase-overlay h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .showcase-overlay p {
+                font-size: 1rem !important;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .section-title-container h2 {
+                font-size: 1.5rem !important;
+            }
+
+            /* Stack cards more elegantly on mobile */
+            .row.g-4 {
+                --bs-gutter-y: 1.5rem;
+            }
         }
     </style>
 </head>
 
-<div id="schoolGallery" class="carousel slide school-showcase shadow-lg mx-md-4" data-bs-ride="carousel">
-    <div class="showcase-overlay" dir="rtl" style="text-align: right; right:5%;"> 
-        <h1 class="display-4 fw-bold" style="color: #e7ac74;">نبني قواد المستقبل</h1>
-        <p class="lead">حيث يلتقي شغف الاكتشاف.. بذكاء التنفيذ</p>
+<div id="schoolGallery" class="carousel slide school-showcase shadow-lg" data-bs-ride="carousel">
+    <div class="showcase-overlay" dir="rtl"> 
+        <h1 class="display-3 fw-bold mb-3">نبني قادة المستقبل</h1>
+        <p class="fs-4 opacity-90">حيث يلتقي شغف الاكتشاف بذكاء التنفيذ في صرح تعليمي رائد</p>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -92,84 +153,107 @@
     </div>
 </div>
 
-<section class="container my-5 py-4" dir="rtl">
-    <div class="row g-4 text-center justify-content-center">
-        <div class="col-md-4 col-sm-6">
-            <div class="card stat-card p-4 shadow-sm h-100">
-                <div class="stat-number">50+</div>
-                <div class="text-muted small fw-bold text-uppercase">عاماً من التميز</div>
+<section class="container" dir="rtl" style="margin-top: -30px;">
+    <div class="row g-3 text-center justify-content-center">
+        <div class="col-6 col-md-2">
+            <div class="card stat-card p-3 shadow-lg border-bottom border-3 border-info">
+                <div class="stat-number" style="font-size: 2rem; color: #e7ac74;">3536</div>
+                <div class="fw-bold text-muted small">طالباً</div>
             </div>
         </div>
-        
-        <div class="col-md-4 col-sm-6">
-            <div class="card stat-card p-4 shadow-sm h-100">
-                <div class="stat-number">83+</div>
-                <div class="text-muted small fw-bold text-uppercase">فصلاً تعليمياً</div>
+        <div class="col-6 col-md-2">
+            <div class="card stat-card p-3 shadow-lg border-bottom border-3 border-info">
+                <div class="stat-number" style="font-size: 2rem; color: #e7ac74;">24</div>
+                <div class="fw-bold text-muted small">من ذوي الهمم</div>
             </div>
         </div>
-        
-        <div class="col-md-4 col-sm-12">
-            <div class="card stat-card p-4 shadow-sm h-100">
-                <div class="stat-number">12+</div>
-                <div class="text-muted small fw-bold text-uppercase">مختبراً علمياً</div>
+        <div class="col-6 col-md-2">
+            <div class="card stat-card p-3 shadow-lg border-bottom border-3 border-info">
+                <div class="stat-number" style="font-size: 2rem; color: #e7ac74;">+50</div>
+                <div class="fw-bold text-muted small">عاماً من التميز</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-2">
+            <div class="card stat-card p-3 shadow-lg border-bottom border-3 border-info">
+                <div class="stat-number" style="font-size: 2rem; color: #e7ac74;">83</div>
+                <div class="fw-bold text-muted small">فصلاً تعليمياً</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-2">
+            <div class="card stat-card p-3 shadow-lg border-bottom border-3 border-info">
+                <div class="stat-number" style="font-size: 2rem; color: #e7ac74;">12</div>
+                <div class="fw-bold text-muted small">مختبراً علمياً مجهزاً</div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="container my-5">
-    <div class="d-flex justify-content-between align-items-end mb-4">
-        <div>
-            <h1 class="text-uppercase fw-bold" style="color: var(--brand-gold)">أخبار</h1>
-            <h2 class="fw-bold">أخر الأخبار الجديد للمدرسة</h2>
-        </div>
-        
+
+
+<section class="container my-5 pt-5">
+    <div class="text-end mb-5" dir="rtl">
+        <h6 class="text-uppercase fw-bold" style="color: var(--brand-gold)">المركز الإعلامي</h6>
+        <h2 class="display-6 fw-bold">أحدث أخبار المدرسة</h2>
+        <div class="section-title"></div>
     </div>
 
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card news-card shadow-sm h-100">
-                <img src="{{url_for('school.static', filename='media/new1.jpg')}}" class="card-img-top" alt="Science Fair">
-                <div class="card-body">
-                    <span class="news-badge mb-2 d-inline-block">خبر</span>
-                    <h4 dir="rtl" class="fw-bold">أنتهاء امتحانات الشهادة الأعدادية</h4>
-                    <p dir="rtl" class="text-muted small">تتقدم السيدة مديرة إدارة المدرسة د/ صباح محمود بالشكر والتقدير لكل من :
-                    - لجنة النظام والمراقبة بالمدرسة تحت قيادة أ/ سميرة جودة رئيسة لجنة النظام والمراقبة و أ/ جيهان مصطفى وكيلة اللجنة وجميع أعضاء لجنة النظام والمراقبة 
-                    - أعضاء هيئة التدريس الأفاضل
-                    -  قسم التطوير التكنولوجي  
-                    - جميع العاملين بالمدرسة 
-                    على المظهر المشرف وعلى التعاون والمجهود الكبير الذي بذله الجميع في كافة أعمال امتحانات الفصل الدراسي الأول للعام ٢٠٢٦/٢٠٢٥ والتي مرت بكل سلاسة ويسر على جميع طلاب المدرسة ما كان له بالغ الأثر على المنظومة ككل، 
-                    خالص التمنيات بدوام التوفيق والنجاح لجميع أعضاء أسرة مدرسة جمال عبد الناصر الثانوية العسكرية
+                <div class="card-img-container">
+                    <img src="{{url_for('school.static', filename='media/new1.jpg')}}" class="card-img-top" alt="News">
+                </div>
+                <div class="card-body text-end" dir="rtl">
+                    <span class="news-badge mb-3 d-inline-block">إعلانات</span>
+                    <h5 class="fw-bold mb-3">انتهاء امتحانات الشهادة الإعدادية</h5>
+                    <p class="text-muted small news-text">
+                        تتقدم إدارة المدرسة بخالص الشكر لكل من ساهم في نجاح العملية الامتحانية، من لجان النظام والمراقبة وهيئة التدريس الموقرة، لظهور المدرسة بمظهر مشرف...
                     </p>
+                    <a href="https://www.facebook.com/p/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%AC%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%86%D8%A7%D8%B5%D8%B1-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B3%D9%83%D8%B1%D9%8A%D8%A9-%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9-%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9-100064479471208/?locale=ar_AR" class="btn btn-link text-decoration-none p-0" style="color: var(--brand-blue)">اقرأ المزيد ←</a>
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card news-card shadow-sm h-100">
-                <img src="{{url_for('school.static', filename='media/new2.jpg')}}" class="card-img-top" alt="Graduation">
-                <div class="card-body">
-                    <span class="news-badge mb-2 d-inline-block">خبر</span>
-                    <h5 class="fw-bold">أخر موعد لتسجيل أستمارة الثانوية العامة 2026</h5>
-                    <p class="text-muted small">لكل طلاب الثانوية العامة في مصر سارعو لتسجيل استمارة الثانوية بموعد اقصاه 5 فبراير برجاء الألتزام</p>
+                <div class="card-img-container">
+                    <img src="{{url_for('school.static', filename='media/new2.jpg')}}" class="card-img-top" alt="News">
+                </div>
+                <div class="card-body text-end" dir="rtl">
+                    <span class="news-badge mb-3 d-inline-block">تنبيه هام</span>
+                    <h5 class="fw-bold mb-3">تسجيل استمارة الثانوية العامة 2026</h5>
+                    <p class="text-muted small news-text">
+                        تذكير لجميع الطلاب بضرورة إنهاء إجراءات تسجيل الاستمارة الإلكترونية في موعد أقصاه 5 فبراير المقبل لضمان دخول الامتحانات...
+                    </p>
+                    <a href="https://www.facebook.com/p/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%AC%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%86%D8%A7%D8%B5%D8%B1-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B3%D9%83%D8%B1%D9%8A%D8%A9-%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9-%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9-100064479471208/?locale=ar_AR" class="btn btn-link text-decoration-none p-0" style="color: var(--brand-blue)">اقرأ المزيد ←</a>
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card news-card shadow-sm h-100">
-                <img src="{{url_for('school.static', filename='media/new3.jpg')}}" class="card-img-top" alt="Graduation">
-                <div class="card-body">
-                    <span class="news-badge mb-2 d-inline-block">خبر</span>
-                    <h5 class="fw-bold">أوائل الصفوف الأول و الثانوي الثانوي للفصل الدراسي الاول 2026/2025</h5>
-                    <p class="text-muted small">مدرسة جمال عبدالناصر الثانوية العسكرية ممثلة في السيدة مديرة إدارة المدرسة د/ صباح محمود والسيد القائد العسكري للمدرسة والسيد رئيس مجلس أمناء المدرسة المهندس/ عبد القادر السبكي ورئيسة لجنة النظام والمراقبة أ/ سميرة جودة، يتقدمون بخالص التهنئة لأوائل طلاب الصفين الأول الثانوي والثاني الثانوي للفصل الدراسي الأول من العام ٢٠٢٦/٢٠٢٥، آملين من المولى عز وجل دوام التوفيق والنجاح في كل ماهو قادم .. ألف مبروك</p>
+                <div class="card-img-container">
+                    <img src="{{url_for('school.static', filename='media/new3.jpg')}}" class="card-img-top" alt="News">
+                </div>
+                <div class="card-body text-end" dir="rtl">
+                    <span class="news-badge mb-3 d-inline-block">تكريم</span>
+                    <h5 class="fw-bold mb-3">أوائل الفصل الدراسي الأول 2026</h5>
+                    <p class="text-muted small news-text">
+                        مدرسة جمال عبد الناصر تبارك لأبنائها المتفوقين في الصفين الأول والثاني الثانوي، مع تمنياتنا بدوام النجاح والتميز في الفصل القادم...
+                    </p>
+                    <a href="https://www.facebook.com/p/%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%AC%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D9%86%D8%A7%D8%B5%D8%B1-%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D8%B3%D9%83%D8%B1%D9%8A%D8%A9-%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9-%D8%A7%D9%84%D8%A5%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9-100064479471208/?locale=ar_AR" class="btn btn-link text-decoration-none p-0" style="color: var(--brand-blue)">اقرأ المزيد ←</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="bg-dark text-white py-5 mt-5">
+<footer class="main-footer py-5 text-white">
     <div class="container text-center">
-        <p class="opacity-50 small mb-0">© 2026 gamal abdel nasser hs, All rights reserved.</p>
+        <h4 class="fw-bold mb-4">مدرسة جمال عبد الناصر الثانوية العسكرية</h4>
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            </div>
+        <p class="opacity-50 small mb-0">© 2026 Gamal Abdel Nasser HS. All rights reserved.</p>
     </div>
 </footer>
 
