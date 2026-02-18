@@ -2,148 +2,57 @@
 
 {% block content %}
 <head>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-            padding-top: 80px;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            background-color: #202123;
-            color: white;
-            min-width: 260px;
-            height: 100vh;
-            position: sticky ;
-            overflow-y: auto;
-        }
-
-        /* Chat Container */
-        .chat-container {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding-bottom: 100px;
-        }
-
-        /* Message Bubbles */
-        .message {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e5e5e5;
-        }
-
-        .user-message {
-            background-color: #ffffff;
-        }
-
-        .ai-message {
-            background-color: #f7f7f8;
-        }
-
-        .avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 4px;
-            margin-right: 15px;
-        }
-
-        /* Input Area Fix */
-        .input-area {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 50%);
-            padding: 20px 0;
-        }
-
-        /* Only when sidebar is visible */
-        @media (min-width: 768px) {
-            .input-area {
-                width: calc(100% - 260px);
-                left: 260px;
-            }
-        }
-
-        .input-box {
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            border: 1px solid #ddd;
-        }
-
-        textarea {
-            border: none !important;
-            resize: none;
-            box-shadow: none !important;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('chat_bot.static', filename='css/style.css')}}">
 </head>
 
-<div class="d-flex">
-    <div class="sidebar d-none d-md-block p-3">
-        <div class="small text-secondary px-2">Start chatting</div>
-        <ul class="nav flex-column mt-2 mb-5">
-            <li class="nav-item"><a href="#" class="nav-link text-white-50 small">ايه هو القرار الوزاري لأتحاد الطلاب</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-white-50 small">بنود مسابقة المكاتب التنفيذية</a></li>
-        </ul>
+<div class="container-fluid begin">
+    <div class="container-fluid header" style="background-color: rgb(235, 234, 234);">
+        <h1 class="me-3 display-6 text-primary font-monospace fw-bold" dir="rtl">مساعد وعيني الذكي</h1>
+       <p class="mt-3 me-3 h5 text-muted" dir="rtl">- انا موجود هنا علشان اجاوب عن كل أسألتك بخصوص الأتحادات الطلابية و القرار الوزاري 62</p>
     </div>
-
-    <div class="flex-grow-1 d-flex flex-column">
-        
-        <div class="chat-container mb-5">
-            <div class="message ai-message d-flex justify-content-center">
-                <div class="d-flex w-75 max-width-800">
-                    <img src="https://ui-avatars.com/api/?name=AI&background=0D6EFD&color=fff" class="avatar">
-                    <div>
-                        <h3 class="mb-1">مساعد تعليمي رقمي</h3>
-                        <p class="mb-0">أهلا بيك اقدر اساعدك ازاي؟</p>
-                    </div>
-                </div>
+    <div class="chatbot">
+        {% if response %}
+        <div class="chat">
+            <div class="question-block me-lg-5 me-md-4 me-sm-2 mt-5">
+                <p class="px-3 py-3" dir="rtl">{{user_prompt}}</p>
             </div>
-
-            {% if user_prompt %}
-            <div class="message user-message d-flex justify-content-center mt-5">
-                <div class="d-flex w-75">
-                    <img src="{{url_for('auth.static',filename='media/'+current_user.icon)}}" class="rounded-circle border border-2 border-accent-gold me-2" style="width: 35px; height: 35px; object-fit: cover;">
-                    <div>
-                        <h4 class="mb-1">{{current_user.username}}</h4>
-                        <p class="mb-0">{{ user_prompt }}</p>
-                    </div>
-                </div>
+            <div class="answer-block mb-5 ms-lg-5 ms-md-4 ms-sm-2 mt-3">
+                <p class="px-3 py-3" dir="rtl">{{response}}</p>
             </div>
-
-            <div class="message ai-message d-flex justify-content-center mb-5">
-                <div class="d-flex w-75">
-                    <img src="https://ui-avatars.com/api/?name=AI&background=0D6EFD&color=fff" class="avatar">
-                    <div>
-                        <h4 class="mb-1">المساعد الرقمي</h4>
-                        <p class="mb-0" dir="rtl" style="white-space: pre-wrap;">{{ response }}</p>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
         </div>
-
-        <div class="input-area">
-            <form method="POST" class="container-fluid">
-                <div class="input-group input-box bg-white p-2">
-                    <textarea name="question" class="form-control" rows="1" placeholder="...حط سؤالك هنا" required></textarea>
-                    <button class="btn btn-primary rounded-3 px-4" type="submit">
-                        أرسل
-                    </button>
+        {% else %}
+        <div class="suggestions">
+            <div class="row mt-3 me-0 ms-0" style="width: 100%;" dir="rtl">
+                <div class="col-4" dir="rtl">
+                    <div class="suggestion-btn ms-3 mx-2">
+                        <a href="" class="suggestion-link">
+                            <p>يعني ايه اتحاد طلاب؟</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center mt-2 small text-secondary">
-                    الذكاء الأثطناعي ممكن يغلط, يستحسن تتأكد من صحة المعلومات كويس
+                <div class="col-4" dir="rtl"> 
+                    <div class="suggestion-btn mx-2">
+                        <a href="" class="suggestion-link">
+                            <p>ايه هو الموضوع المحوري للأتحادات الطلابية السنة ديه؟</p>
+                        </a>
+                    </div>
                 </div>
+                <div class="col-4" dir="rtl">
+                    <div class="suggestion-btn me-3 mx-2">
+                        <a href="" class="suggestion-link">
+                            <p>ازاي انضم للأتحاد الطلابي او المكتب التنفيذي لمدرسة جمال عبد الناصر؟</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="ask-form">
+            <form class="form" action="" method="post">
+                <input name="prompt" class="form-control" type="text" style="width: 100%;" placeholder="أسألني هنا" dir="rtl">
+                <button class="btn btn-primary ms-3"><i class="bi bi-search"></i></button>
             </form>
         </div>
-
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

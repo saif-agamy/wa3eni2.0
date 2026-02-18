@@ -11,16 +11,17 @@ chat_bot_b = Blueprint(
 )
 
 # setup ai model
-genai.configure(api_key='AIzaSyCOQfHuibT5wMs9tko8KwomWVwBqzw_4oI')
+# AIzaSyAGrzP-yhDRU6oa-NpP5Sj4HemWTgNLR-U
+genai.configure(api_key='')
 model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
 @login_required
 @chat_bot_b.route('/chatbot/', methods=['GET','POST'])
 def chat():
     if request.method == 'POST':
-        user_prompt = request.form.get('question')
+        user_prompt = request.form.get('prompt')
 
-        prompt = f"""
+        system_prompt = f"""
         Act as the Ultimate Expert and Legal Consultant for Egyptian Student Unions, specifically based on Ministerial Decree 62/2013 and its 90-article executive regulations.
         Your Knowledge Base includes:
         • Principles & Objectives: The definitions of student unions as democratic organisations, their 6 core principles (e.g., freedom of expression, national unity), and their objectives like building Egyptian personality and academic excellence.
@@ -51,11 +52,11 @@ def chat():
         2. Answer Queries: If I ask about specific scenarios (e.g., membership dropping or emergency meetings), provide the answer according to the decree.
         3. Simulation: Act as a competition judge and ask me to explain how I implemented the 'Theme of the Year' in my school.
         Always maintain a professional, educational, and supportive tone. When I answer a question, tell me if I am right or wrong based on the Decree 62/2013 rules."
-        behave kindly, your name is (wa3eni chatbot/ مساعد وعيني الذكي) choose depends on the language of the question!
+        behave kindly, your are wa3eni helper chatbot that helps students know more info and your name is (wa3eni chatbot/ مساعد وعيني الذكي) choose depends on the language of the question! speak in egyptian arabic
         Answer this student question clearly:{user_prompt}"""
 
-        response = model.generate_content(prompt)
-
+        response = model.generate_content(system_prompt)
+    
         return render_template('chatbot.html', response=response.text, user_prompt=user_prompt)
 
     return render_template('chatbot.html')
