@@ -11,8 +11,8 @@ chat_bot_b = Blueprint(
 )
 
 # setup ai model
-# AIzaSyAGrzP-yhDRU6oa-NpP5Sj4HemWTgNLR-U
-genai.configure(api_key='')
+# 
+genai.configure(api_key='AIzaSyAGrzP-yhDRU6oa-NpP5Sj4HemWTgNLR-U')
 model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
 @login_required

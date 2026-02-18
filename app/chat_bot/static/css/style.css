@@ -47,19 +47,22 @@
     transform: scale(1.1);
 }
 
-.suggestion-link {
+.suggestion-input {
+    background-color: transparent;
+    border: none;
     text-decoration: none;
     color: #325caf;
     transition: all 0.3s ease;
 }
-.suggestion-btn:hover .suggestion-link {
+.suggestion-btn:hover .suggestion-input {
     color: #e7ac74;
 }
 
-.suggestion-link p {
+.suggestion-input p {
     font-weight: bold;
     font-size: larger;
     max-width: 300px;
+    
 }
 
 .chat {
