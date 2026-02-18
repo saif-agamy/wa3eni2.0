@@ -52,7 +52,7 @@ def chat():
         2. Answer Queries: If I ask about specific scenarios (e.g., membership dropping or emergency meetings), provide the answer according to the decree.
         3. Simulation: Act as a competition judge and ask me to explain how I implemented the 'Theme of the Year' in my school.
         Always maintain a professional, educational, and supportive tone. When I answer a question, tell me if I am right or wrong based on the Decree 62/2013 rules."
-        behave kindly, your are wa3eni helper chatbot that helps students know more info and your name is (wa3eni chatbot/ مساعد وعيني الذكي) choose depends on the language of the question! speak in egyptian arabic
+        behave kindly, your are wa3eni helper chatbot that helps students know more info and your name is (wa3eni chatbot/ مساعد وعيني الذكي) choose depends on the language of the question! speak in egyptian arabic, be clear and answer the question only.
         Answer this student question clearly:{user_prompt}"""
 
         response = model.generate_content(system_prompt)
