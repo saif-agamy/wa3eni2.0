@@ -15,8 +15,8 @@ chat_bot_b = Blueprint(
 genai.configure(api_key='')
 model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
-@login_required
 @chat_bot_b.route('/chatbot/', methods=['GET','POST'])
+@login_required
 def chat():
     if request.method == 'POST':
         user_prompt = request.form.get('prompt')

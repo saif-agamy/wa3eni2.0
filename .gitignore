@@ -1,0 +1,13 @@
+# .gitignore
+
+# Ignore SQLite databases
+*.db
+*.sqlite3
+
+# Ignore the Flask instance folder (where Flask often puts the DB now)
+app/db/*.db
+app/db/*.sqlite3
+
+# Ignore Python compiled files (always good practice)
+__pycache__/
+*.pyc

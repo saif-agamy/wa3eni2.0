@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
-from app.models import User, Post, Lost
+from app.models import User, Post, Lost, Exam, Question
 from flask_login import login_required, current_user
 
 admin_b = Blueprint(
@@ -13,13 +13,17 @@ admin_b = Blueprint(
 @login_required
 @admin_b.route('/admin/')
 def admin():
-    if current_user.is_admin:
+    if current_user.is_admin or current_user.username == 'admin123':
         users = User.query.all()
         users_num = User.query.count()
         posts = Post.query.all()
         posts_num = Post.query.count()
         losts =Lost.query.all()
         lost_num =Lost.query.count()
+        exams = Exam.query.all()
+        exams_num = Exam.query.count()
+        questions = Question.query.all()
+        questions_num = Question.query.count()
         return render_template('admin.html', 
             total_users=users_num, 
             users=users,
@@ -27,6 +31,10 @@ def admin():
             posts=posts,
             total_losts=lost_num,
             losts=losts,
+            exams=exams,
+            exams_num=exams_num,
+            questions=questions,
+            questions_num=questions_num,
             )
     else :
         return redirect(url_for('home.home'))

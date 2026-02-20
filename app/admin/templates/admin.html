@@ -90,8 +90,8 @@
                 <div class="d-flex align-items-center">
                     <div class="icon-box bg-info text-white me-3"><i class="bi bi-stars fs-4"></i></div>
                     <div>
-                        <h6 class="text-muted mb-0">Skills Posted</h6>
-                        <h4 class="fw-bold mb-0">1</h4>
+                        <h6 class="text-muted mb-0">Exams</h6>
+                        <h4 class="fw-bold mb-0">{{exams_num}}</h4>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
     <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-users"><span style="color: #e7ac74;">Users</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-content"><span style="color: #e7ac74;">Losts & Founds</span></button></li>
-        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-skills"><span style="color: #e7ac74;">Skilled Students</span></button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-comp"><span style="color: #e7ac74;">competition</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-analytics"><span style="color: #e7ac74;">Analytics</span></button></li>
     </ul>
 
@@ -152,6 +152,44 @@
                                     <td>{{lost.name}}</td>
                                     <td><i class="bi bi-clock-history"></i>{{ lost.date.strftime('%b %d') }} &bull; {{ lost.date.strftime('%I:%M %p') }}</td>
                                     <td><a href="{{url_for('community.delete_item', id=lost.id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-comp">
+            <div class="row">
+                <div class="col-md-12 mb-4">
+                    <h5 class="fw-bold mb-3">All Active Reports</h5>
+                    <div class="card data-table-card p-3">
+                        <table class="table">
+                            <thead><tr><th>Category</th><th>Day</th><th>Active</th><th>questions</th><th>Actions</th></tr></thead>
+                            <tbody>
+                                <tr><a href="{{url_for('community.add_exam')}}" class="btn btn-sm btn-success"> Add Exam</a></tr>
+                                {% for exam in exams %}
+                                <tr>
+                                    <td>{{exam.get_display_category()}}</td>
+                                    <td>{{exam.get_display_day()}}</td>
+                                    <td>{{exam.active}}</td>
+                                    <td>
+                                        <select class="form-select" aria-label="Questions select">
+                                            <option selected disabled>View Questions ({{ exam.questions|length }})</option>
+                                            {% for question in exam.questions %}
+                                                <option class="text-primary" value="{{ question.id }}">
+                                                    {{ question.question }} - ({{question.correct}})
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <a href="{{url_for('community.add_question', id=exam.id)}}" class="btn btn-sm btn-success"> Add Question</a>
+                                        <a href="{{url_for('community.active_exam', id=exam.id)}}" class="btn btn-sm btn-primary"> Active Exam</a>
+                                        <a href="{{url_for('community.delete_exam', id=exam.id)}}" class="btn btn-sm btn-danger"> delete Exam</a>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

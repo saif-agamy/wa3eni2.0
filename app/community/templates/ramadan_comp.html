@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<head>
+    <style>
+        .join-btn {
+            text-decoration: none;
+            border: 3px solid transparent;
+            background-color: #0d6efd;
+            color: #e7ac74;
+            transition: all 0.5s ease;
+            border-radius: 15px;
+            padding: 1rem 3rem;
+            font-size: xx-large;
+            display: inline-block;
+        }
+
+        .join-btn:hover {
+            transform: scale(2);
+            border: 3px solid #e7ac74;
+            background-color: transparent;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+
+    <div class="container-fluid vh-100">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 600px;">
+                    <div class="container-fluid" style="width: fit-content;">
+                        <h1 class="display-3 fw-bold text-primary" style="text-align: center;">أهلا بيك في</h1>
+                        <h1 class="display-3 fw-bold text-warning mt-5" style="text-align: center;">المسابقة الرمضانية</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 600px;">
+                    <div class="container-fluid" style="width: fit-content;">
+                        <div class="container-fluid ms-2">
+                        <a href="{{url_for('community.exam')}}" class="ms-4 join-btn">حل أسئلة اليوم</a>
+                        </div>
+                        <div class="container-fluid" style="height: 5rem;">
+                            <!-- block to get height -->
+                        </div>
+                        <div class="container-fluid">
+                            <a href="{{url_for('community.leader_board')}}" class="join-btn">شوف المراكز الحالية</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if solved %}
+            <div class="container-fluid rounded-4 border-2 bg-danger px-2 py-2 d-flex justify-content-center"><h1 class="text-white">انت حليت الأختبار ده بالفعل انهاردة</h1></div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -78,6 +78,12 @@
                     </label>
                 </div>
 
+                {% if error_message %}
+                    <div class="container">
+                        <span class="text-danger fw-bold">{{error_message}}</span>
+                    </div>
+                {% endif %}
+
                 <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">أنشئ</button>
                 
                 <p class="text-center small">عندك حساب؟ <a href="{{url_for('auth.login')}}" class="link-accent">سجل دخولك</a></p>

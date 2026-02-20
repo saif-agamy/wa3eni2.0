@@ -1,0 +1,193 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<head>    
+    <link rel="stylesheet" href="{{url_for('community.static', filename='css/style.css')}}">
+
+    <style>
+    /* 1. Hide the radio circle entirely */
+    .answer-wrapper {
+        width: 100%;
+    }
+
+    .answer-wrapper input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* 2. Style the big rectangle */
+    .answer-rectangle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1rem; /* Sized up padding */
+        background-color: #ffffff;
+        border: 3px solid #f0f0f0;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        min-height: 200px;
+        width: 100%;
+    }
+
+    /* 3. Sizing up the text and triangle */
+    .answer-text {
+        font-size: 2rem; /* Big readable text */
+        font-weight: bold;
+        color: #0d6efd;
+        margin-top: 15px;
+    }
+
+    .triangle {
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 40px solid #e7ac74; /* Gold triangle */
+        transition: transform 0.4s ease;
+    }
+
+    /* 4. Hover State */
+    .answer-wrapper:hover .answer-rectangle {
+        border-color: #0d6efd;
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* 5. Selected State (When clicked) */
+    .answer-wrapper input:checked + .answer-rectangle {
+        background-color: #0d6efd;
+        border-color: #e7ac74;
+        box-shadow: 0 0 25px rgba(13, 110, 253, 0.4);
+    }
+
+    /* Change internal colors when selected */
+    .answer-wrapper input:checked + .answer-rectangle .answer-text {
+        color: #ffffff;
+    }
+
+    .answer-wrapper input:checked + .answer-rectangle .triangle {
+        border-bottom-color: #ffffff;
+        transform: scale(1.2) rotate(360deg);
+    }
+
+    .join-btn {
+        text-decoration: none;
+        border: 3px solid transparent;
+        background-color: #0d6efd;
+        color: #e7ac74;
+        transition: all 0.5s ease;
+        border-radius: 15px;
+        padding: 1rem 3rem;
+        font-size: xx-large;
+        display: inline-block;
+    }
+
+    .join-btn:hover {
+        transform: scale(1.2);
+        border: 3px solid #e7ac74;
+        background-color: transparent;
+        color: #0d6efd;
+    }
+    </style>
+</head>
+
+<div class="container pb-5">
+    <h2 class="bg-danger text-white shadow" style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 1050; padding: 15px 20px; border-radius: 15px 0 0 15px; border: 2px solid #dc3545; border-right: none; margin: 0; font-size: 1.2rem; font-weight: normal;">
+        الوقت المتبقي : <span id="timeDisplay" class="fw-bold fs-4">30</span> ثانية 
+    </h2>
+    <div class="card create-card shadow-sm mt-1">
+        <div class="card-header border-0 pt-4 pb-0 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold mb-0" style="color: #0d6efd;">جاوب بدقة</h5>
+            <a href="/" class="btn-close" aria-label="Close"></a>
+        </div>
+        
+        <div class="card-body mb-5">
+
+            <form method="POST" id="examForm" class="exam-form mt-5" dir="rtl">
+
+                <!-- send the time that student spent out of 30 in the exam -->
+                <input type="hidden" id="timeSpentInput" name="time_spent" value="0">
+
+                {% for question in questions %}
+                <div class="question-container mb-5">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 fw-bold text-primary">{{ question.question }}</h1>
+                    </div>
+
+                    <div class="row g-4">
+                        {% for i in ['1', '2', '3', '4'] %}
+                        <div class="col-md-6">
+                            <label class="answer-wrapper">
+                                <input type="radio" name="question_{{ question.id }}" value="answer{{ i }}" required>
+                                <div class="answer-rectangle">
+                                    <div class="triangle"></div>
+                                    <span class="answer-text">{{ question['answer' ~ i] }}</span>
+                                </div>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="text-center mt-5">
+                    <button type="submit" class="join-btn">تأكيد الإجابات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updatePreview() {
+        const url = document.getElementById('imageUrl').value;
+        const previewBox = document.getElementById('imagePreview');
+        const placeholder = document.getElementById('previewPlaceholder');
+        
+        if (url) {
+            previewBox.innerHTML = `<img src="${url}" onerror="this.src='https://placehold.co/600x400?text=Invalid+Image+URL'">`;
+        } else {
+            previewBox.innerHTML = `
+                <div class="text-center text-muted" id="previewPlaceholder">
+                    <i class="bi bi-image fs-1"></i>
+                    <p>Image Preview will appear here</p>
+                </div>`;
+        }
+    }
+
+    let timeLeft = 30;
+    const totalTime = 30; // Store the max time to do the math
+
+    const timeDisplay = document.getElementById('timeDisplay');
+    const examForm = document.getElementById('examForm');
+    const timeSpentInput = document.getElementById('timeSpentInput');
+
+    // 1. Handle MANUAL submission (user clicks the button)
+    examForm.addEventListener('submit', function() {
+        // Calculate how much time they actually spent
+        const secondsSpent = totalTime - timeLeft;
+        // Inject that number into the hidden input before the form flies off to the server
+        timeSpentInput.value = secondsSpent;
+    });
+
+    // 2. Handle AUTOMATIC submission (time runs out)
+    const timer = setInterval(function() {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            
+            // They used all the time
+            timeSpentInput.value = totalTime; 
+            
+            alert("Time is up! Submitting your exam automatically.");
+            examForm.submit();
+        }
+    }, 1000);
+</script>
+{% endblock %}

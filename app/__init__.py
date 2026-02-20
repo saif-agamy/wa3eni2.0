@@ -1,9 +1,10 @@
 from flask import Flask
 from os import path
 from app.extensions import db
-from app.models import Post, User
+from app.models import Post, User, Exam, Question
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from sqlalchemy import text
 login_manager = LoginManager()
 
 def create_app():
@@ -34,13 +35,22 @@ def create_app():
 
     #edit the sql 
     with app.app_context():
-        db.create_all()
+        # db.create_all()
+
+        # This SQL command forces the database to drop the stuck table
+        try:
+            db.session.execute(text("DROP TABLE _alembic_tmp_exam"))
+            db.session.commit()
+            print("✅ Success! Temporary table dropped.")
+        except Exception as e:
+            print(f"⚠️ Error (maybe it's already gone?): {e}")
 
     #setup migrations
     migrate = Migrate(app,db)
+    migrate.init_app(app,db)
 
     #initialize user auth sys
-    login_manager.login_view = 'login'
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
      
 
