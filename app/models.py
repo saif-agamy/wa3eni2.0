@@ -122,7 +122,7 @@ class Exam(db.Model):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    exam_id = db.Column(db.Integer, db.ForeignKey('exam.id'), nullable=False)
+    exam_id = db.Column(db.Integer, db.ForeignKey('exam.id'))
     question = db.Column(db.String(256), nullable=False)
     answer1 = db.Column(db.String(128), nullable=False)
     answer2 = db.Column(db.String(128), nullable=False)
