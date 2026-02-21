@@ -307,11 +307,11 @@ def active_exam(id):
             # 3. Now activate the target exam.
             the_exam.active = True
 
-            db.session.commit()
+        db.session.commit()
 
         return redirect(url_for('admin.admin'))
     else :
-            return redirect(url_for('admin.admin'))
+        return redirect(url_for('admin.admin'))
     
 @community_b.route('/community/ramadan/leaderboard')
 @login_required
