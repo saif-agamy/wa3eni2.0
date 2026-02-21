@@ -1,13 +1,12 @@
-# .gitignore
+# Database
+db.sqlite3
 
-# Ignore SQLite databases
-*.db
-*.sqlite3
+# Ignore the database inside the app/db folder
+app/db/site.db
 
-# Ignore the Flask instance folder (where Flask often puts the DB now)
-app/db/*.db
-app/db/*.sqlite3
-
-# Ignore Python compiled files (always good practice)
+# Python cache files
 __pycache__/
 *.pyc
+
+# Environment variables (if you ever use them for secret keys)
+.env
