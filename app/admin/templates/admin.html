@@ -102,6 +102,7 @@
         <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-users"><span style="color: #e7ac74;">Users</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-content"><span style="color: #e7ac74;">Losts & Founds</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-comp"><span style="color: #e7ac74;">competition</span></button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-blog"><span style="color: #e7ac74;">blog posts</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-analytics"><span style="color: #e7ac74;">Analytics</span></button></li>
     </ul>
 
@@ -112,6 +113,7 @@
                     <table class="table align-middle">
                         <thead class="table-light">
                             <tr>
+                                <th>id</th>
                                 <th>المستخدم</th>
                                 <th>وظيفته</th>
                                 <th>الصف الدراسي</th>
@@ -122,7 +124,8 @@
                         <tbody>
                             {% for user in users %}
                             <tr class="user-row">
-                                <td><h6 class="mb-0">{{user.name}}</h6><small class="text-muted">{{user.email}}</small></td>
+                                <td><h6 class="mb-0">{{user.id}}</h6></td>
+                                <td><h6 class="mb-0">{{user.username}}</h6><small class="text-muted">{{user.email}}</small></td>
                                 <td><span class="badge bg-secondary">{{user.role}}</span></td>
                                 <td>{{user.grade}}</td>
                                 <td>{% if user.from_school %}<span class="text-success fw-bold">من المدرسة</span>{% else %}مش من المدرسة{% endif %}</td>
@@ -152,6 +155,29 @@
                                     <td>{{lost.name}}</td>
                                     <td><i class="bi bi-clock-history"></i>{{ lost.date.strftime('%b %d') }} &bull; {{ lost.date.strftime('%I:%M %p') }}</td>
                                     <td><a href="{{url_for('community.delete_item', id=lost.id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-blog">
+            <div class="row">
+                <div class="col-md-12 mb-4">
+                    <h5 class="fw-bold mb-3">All Active Reports</h5>
+                    <div class="card data-table-card p-3">
+                        <table class="table">
+                            <thead><tr><th>author id</th><th>Title</th><th>Date</th><th>Action</th></tr></thead>
+                            <tbody>
+                                {% for post in posts %}
+                                <tr>
+                                    <td>{{post.author_id}}</td>
+                                    <td>{{post.title}}</td>
+                                    <td>{{post.date}}</td>
+                                    <td><a href="{{url_for('community.delete', id=post.id)}}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

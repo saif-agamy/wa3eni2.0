@@ -97,9 +97,10 @@ def profile(id):
 @login_required
 def set_admin(id):
     if current_user.is_admin :
-        user = User.query.get_or_404(id)
-        user.set_admin()
-        db.session.commit()
+        if not current_user.id == id :
+            user = User.query.get_or_404(id)
+            user.set_admin()
+            db.session.commit()
 
         return redirect(url_for('admin.admin'))
     

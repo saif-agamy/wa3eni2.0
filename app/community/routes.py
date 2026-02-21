@@ -114,6 +114,9 @@ def delete(id):
         db.session.delete(post)
         db.session.commit()
 
+        if current_user.is_admin :
+            return redirect(url_for('admin.admin'))
+        
         return redirect(url_for('community.blog'))
     
     else :
@@ -139,8 +142,9 @@ def delete_item(id):
 @login_required
 def ramadan_comp():
     solved = request.args.get('solved')
+    no_exam = request.args.get('no_exam')
 
-    return render_template('ramadan_comp.html', solved=solved)
+    return render_template('ramadan_comp.html', solved=solved, no_exam=no_exam)
 
 
 @community_b.route('/community/ramadan/exam', methods=['GET','POST'])
@@ -150,7 +154,7 @@ def exam():
     
     # 1. If no active exam, bounce them back home
     if not the_exam:
-        return redirect(url_for('home.home'))
+        return redirect(url_for('community.ramadan_comp', no_exam=True))
 
     # 2. Check if the user has ANY record for this exam (even a blank one)
     exam_link = Exam_Enrollments.query.filter_by(user_id=current_user.id, exam_id=the_exam.id).first()
@@ -237,7 +241,7 @@ def add_exam():
 
         return render_template('add_exam.html', exam_form=Exam_Form)
     else :
-        return redirect(url_for('home.home'))
+        return redirect(url_for('admin.admin'))
 
 
 @community_b.route('/community/ramadan/<int:id>/addquestion', methods=['GET','POST'])
@@ -266,7 +270,7 @@ def add_question(id):
 
         return render_template('add_question.html', question_form=Question_Form)
     else :
-        return redirect(url_for('home.home'))
+        return redirect(url_for('admin.admin'))
     
 
 
@@ -281,25 +285,33 @@ def delete_exam(id):
 
         return redirect(url_for('admin.admin'))
     else :
-            return redirect(url_for('home.home'))
+            return redirect(url_for('admin.admin'))
 
 
 @community_b.route('/community/ramadan/<int:id>/active', methods=['GET','POST'])
 @login_required
 def active_exam(id):
-    if current_user.is_admin :
-        the_exam = Exam.query.get(id)
-        if the_exam :
-            if the_exam.active :
-                the_exam.active = False
-            else :
-                the_exam.active = True
+    
+    the_exam = Exam.query.get(id)
+
+    if the_exam:
+        # 1. If the selected exam is ALREADY active, just deactivate it.
+        if the_exam.active:
+            the_exam.active = False
+        else:
+            # 2. If we are activating a new exam, deactivate the old one FIRST (if it exists).
+            activated_exam = Exam.query.filter_by(active=True).first()
+            if activated_exam:
+                activated_exam.active = False
+            
+            # 3. Now activate the target exam.
+            the_exam.active = True
 
             db.session.commit()
 
         return redirect(url_for('admin.admin'))
     else :
-            return redirect(url_for('home.home'))
+            return redirect(url_for('admin.admin'))
     
 @community_b.route('/community/ramadan/leaderboard')
 @login_required

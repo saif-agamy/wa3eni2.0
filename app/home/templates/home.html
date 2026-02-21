@@ -7,7 +7,17 @@
 
 <section id="main">
     <div class="hero-section" >
-        <div class="hero-slide bg-1 active">
+        <div class="hero-slide bg-4 active">
+            <div class="hero-content">
+                <div>
+                    <h2 class="mt-3">المسابقة الرمضانية 2026</h2>
+                    <p class="mt-3">أمامك 30 ثانية فقط أجب على أسئلة اليوم وتحدى نفسك مع محتوى متجدد يومياً ثلاثة أسئلة متنوعة تهدف إلى تعزيز وعيك الديني وإثراء مخزونك الثقافي</p>
+                    <a href="{{url_for('community.ramadan_comp')}}" class="btn hero-btn mt-3">شارك في المسابقة</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide bg-1">
             <div class="hero-content">
                 <div>
                     <h2 class="mt-3">مدرسة جمال عبد الناصر الثانوية العسكرية</h2>
@@ -41,6 +51,7 @@
             <div class="indicator active" data-slide="0"></div>
             <div class="indicator" data-slide="1"></div>
             <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
         </div>
 
         <div class="carousel-controls">
@@ -302,7 +313,7 @@
     }
 
     function startAutoPlay() {
-        autoPlayInterval = setInterval(nextSlide, 6000);
+        autoPlayInterval = setInterval(nextSlide, 8000);
     }
 
     function resetAutoPlay() {

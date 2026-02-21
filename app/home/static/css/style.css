@@ -46,6 +46,10 @@ section {
     background-image: url("../media/health.png");
 }
 
+.bg-4 {
+    background-image: url("../media/competition_cover.png");
+}
+
 .hero-slide.active {
     opacity: 1;
 }

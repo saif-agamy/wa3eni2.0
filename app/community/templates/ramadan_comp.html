@@ -1,57 +1,117 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<head>
-    <style>
-        .join-btn {
-            text-decoration: none;
-            border: 3px solid transparent;
-            background-color: #0d6efd;
-            color: #e7ac74;
-            transition: all 0.5s ease;
-            border-radius: 15px;
-            padding: 1rem 3rem;
-            font-size: xx-large;
-            display: inline-block;
-        }
+<style>
+    :root {
+        --primary-color: #0d6efd;
+        --accent-color: #e7ac74;
+        --dark-bg: #f8f9fa;
+    }
 
-        .join-btn:hover {
-            transform: scale(2);
-            border: 3px solid #e7ac74;
-            background-color: transparent;
-            color: #0d6efd;
-        }
-    </style>
-</head>
+    .hero-section {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #ffffff 0%, #f1f4f9 100%);
+        padding: 2rem 0;
+    }
 
-    <div class="container-fluid vh-100">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 600px;">
-                    <div class="container-fluid" style="width: fit-content;">
-                        <h1 class="display-3 fw-bold text-primary" style="text-align: center;">أهلا بيك في</h1>
-                        <h1 class="display-3 fw-bold text-warning mt-5" style="text-align: center;">المسابقة الرمضانية</h1>
-                    </div>
-                </div>
+    .main-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.2;
+    }
+
+    .btn-custom {
+        text-decoration: none;
+        padding: 1.2rem 2.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: inline-block;
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* زر الأسئلة - أساسي */
+    .btn-quiz {
+        background-color: var(--primary-color);
+        color: white !important;
+        border: 2px solid var(--primary-color);
+    }
+
+    /* زر المتصدرين - شفاف */
+    .btn-leaderboard {
+        background-color: transparent;
+        color: var(--primary-color) !important;
+        border: 2px solid var(--primary-color);
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(13, 110, 253, 0.2);
+    }
+
+    .alert-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    /* تحسينات الموبايل */
+    @media (max-width: 768px) {
+        .hero-section {
+            text-align: center;
+            min-height: auto;
+        }
+        .btn-custom {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<div class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-5 mt-5">
+            <div class="col-lg-6 text-center text-lg-end" dir="rtl">
+                <h2 class=" fw-light mb-0" style="color: #e7ac74;">أهلاً بك في</h2>
+                <h1 class="main-title fw-bold text-primary mb-4">المسابقة الرمضانية</h1>
+                <p class="lead text-muted mb-5">
+                    استثمر وقتك في رمضان، أجب عن الأسئلة اليومية، وارتقِ بوعيك الديني والثقافي في 30 ثانية فقط.
+                </p>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 600px;">
-                    <div class="container-fluid" style="width: fit-content;">
-                        <div class="container-fluid ms-2">
-                        <a href="{{url_for('community.exam')}}" class="ms-4 join-btn">حل أسئلة اليوم</a>
-                        </div>
-                        <div class="container-fluid" style="height: 5rem;">
-                            <!-- block to get height -->
-                        </div>
-                        <div class="container-fluid">
-                            <a href="{{url_for('community.leader_board')}}" class="join-btn">شوف المراكز الحالية</a>
-                        </div>
-                    </div>
+
+            <div class="col-lg-6">
+                <div class="d-flex flex-column align-items-center gap-3">
+                    <a href="{{url_for('community.exam')}}" class="btn-custom btn-quiz">
+                        حل أسئلة اليوم
+                    </a>
+                    <a href="{{url_for('community.leader_board')}}" class="btn-custom btn-leaderboard">
+                        شوف المراكز الحالية
+                    </a>
                 </div>
             </div>
         </div>
-        {% if solved %}
-            <div class="container-fluid rounded-4 border-2 bg-danger px-2 py-2 d-flex justify-content-center"><h1 class="text-white">انت حليت الأختبار ده بالفعل انهاردة</h1></div>
-        {% endif %}
     </div>
+</div>
+
+<div class="alert-container text-center">
+    {% if solved %}
+    <div class="alert alert-warning border-0 shadow-sm rounded-4 py-3" role="alert">
+        <h5 class="mb-0 text-dark">لقد قمت بحل اختبار اليوم بالفعل، ننتظرك غداً</h5>
+    </div>
+    {% endif %}
+
+    {% if no_exam %}
+    <div class="alert alert-danger border-0 shadow-sm rounded-4 py-3" role="alert">
+        <h5 class="mb-0 text-white">لا يوجد اختبار متاح حالياً، ترقبوا الإطلاق</h5>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
