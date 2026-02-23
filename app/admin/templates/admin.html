@@ -130,8 +130,8 @@
                                 <td>{{user.grade}}</td>
                                 <td>{% if user.from_school %}<span class="text-success fw-bold">من المدرسة</span>{% else %}مش من المدرسة{% endif %}</td>
                                 <td>
-                                    <a href="{{url_for('auth.set_admin', id=user.id)}}" class="btn btn-sm {% if user.is_admin %}btn-primary{% else %}btn-outline-primary{% endif %} btn-action">Admin</a>
-                                    <a href="{{url_for('auth.verify', id=user.id)}}" class="btn btn-sm {% if user.verified %}btn-success{% else %}btn-outline-success{% endif %} btn-action">Verify</a>
+                                    <a href="{{url_for('admin.set_admin', id=user.id)}}" class="btn btn-sm {% if user.is_admin %}btn-primary{% else %}btn-outline-primary{% endif %} btn-action">Admin</a>
+                                    <a href="{{url_for('admin.verify', id=user.id)}}" class="btn btn-sm {% if user.verified %}btn-success{% else %}btn-outline-success{% endif %} btn-action">Verify</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -195,7 +195,7 @@
                         <table class="table">
                             <thead><tr><th>Category</th><th>Day</th><th>Active</th><th>questions</th><th>Actions</th></tr></thead>
                             <tbody>
-                                <tr><a href="{{url_for('community.add_exam')}}" class="btn btn-sm btn-success"> Add Exam</a></tr>
+                                <tr><a href="{{url_for('admin.add_exam')}}" class="btn btn-sm btn-success"> Add Exam</a></tr>
                                 {% for exam in exams %}
                                 <tr>
                                     <td>{{exam.get_display_category()}}</td>
@@ -212,9 +212,9 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <a href="{{url_for('community.add_question', id=exam.id)}}" class="btn btn-sm btn-success"> Add Question</a>
-                                        <a href="{{url_for('community.active_exam', id=exam.id)}}" class="btn btn-sm btn-primary"> Active Exam</a>
-                                        <a href="{{url_for('community.delete_exam', id=exam.id)}}" class="btn btn-sm btn-danger"> delete Exam</a>
+                                        <a href="{{url_for('admin.add_question', id=exam.id)}}" class="btn btn-sm btn-success"> Add Question</a>
+                                        <a href="{{url_for('admin.active_exam', id=exam.id)}}" class="btn btn-sm btn-primary"> Active Exam</a>
+                                        <a href="{{url_for('admin.delete_exam', id=exam.id)}}" class="btn btn-sm btn-danger"> delete Exam</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -241,6 +241,28 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+        {% for exam in exams %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="container bg-white rounded-4 shadow py-2">
+                    <div class="d-flex">
+                        <h1 class="fw-bold fs-3" style="color: #e7ac74;">Exam id : <span style="color: #325caf;">{{exam.id}}</span></h1>
+                        <h1 class="fw-bold fs-3" style="color: #e7ac74;"> , Day : <span style="color: #325caf;">{{exam.get_display_day()}}</span></h1>
+                    </div>
+                    {% for user in exams_participations %}
+                        {% if user.exam_id == exam.id %}
+                            <div class="d-flex">
+                                <p class="fw-bold fs-4 me-3">- {{user.username}}</p>
+                                <p class="fs-4 me-3">score : <span style="color: #e7ac74;">{{user.score}}pts</span></p>
+                                <p class="fs-4 me-3">time : <span style="color: #325caf;">{{user.time}}s</span></p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 

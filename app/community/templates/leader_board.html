@@ -107,19 +107,17 @@
         <div class="leaderboard-body">
         
         {% for student in students %}
-            
             <div class="rank-row {% if loop.index == 1 %}rank-first{% elif loop.index in [2, 3] %}rank-second{% endif %}">
-                
+            
                 <div class="rank-num">{{ loop.index }}</div>
                 
                 <div class="rank-name">{{ student.username }}</div>
                 
                 <div class="rank-score">{{ student.total_score }} نقاط <span class="time-spent">({{ student.total_time }}s مدة الحل)</span></div>
             </div>
-            
         {% endfor %}
 
-        {% if not top_students %}
+        {% if not students %}
             <div class="text-center p-4 text-muted">No one has taken an exam yet!</div>
         {% endif %}
             

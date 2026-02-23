@@ -217,101 +217,19 @@ def exam():
         db.session.commit()
         
         # Redirect after successful submission
-        return redirect(url_for('community.ramadan_comp', solved=True))
-
-
-@community_b.route('/community/ramadan/add', methods=['GET','POST'])
-@login_required
-def add_exam():
-    if current_user.is_admin :
-        Exam_Form = ExamForm()
-
-        if Exam_Form.validate_on_submit():
-            Exams_same_day = Exam.query.filter_by(day=Exam_Form.day.data).first()
-            if Exams_same_day is None :
-                new_exam = Exam(
-                    day=Exam_Form.day.data,
-                    category=Exam_Form.category.data
-                )
-
-                db.session.add(new_exam)
-                db.session.commit()
-
-                return redirect(url_for('admin.admin'))
-
-        return render_template('add_exam.html', exam_form=Exam_Form)
-    else :
-        return redirect(url_for('admin.admin'))
-
-
-@community_b.route('/community/ramadan/<int:id>/addquestion', methods=['GET','POST'])
-@login_required
-def add_question(id):
-    if current_user.is_admin :
-        Question_Form = QuestionForm()
-
-        if Question_Form.validate_on_submit():
-            exam = Exam.query.get_or_404(id)
-            if len(exam.questions) < 3:
-                new_question = Question(
-                    exam_id=id,
-                    question=Question_Form.question.data,
-                    answer1=Question_Form.answer1.data,
-                    answer2=Question_Form.answer2.data,
-                    answer3=Question_Form.answer3.data,
-                    answer4=Question_Form.answer4.data,
-                    correct=Question_Form.correct.data
-                )
-
-                db.session.add(new_question)
-                db.session.commit()
-
-            return redirect(url_for('admin.admin'))
-
-        return render_template('add_question.html', question_form=Question_Form)
-    else :
-        return redirect(url_for('admin.admin'))
+        return redirect(url_for('community.exam_score', id=exam_link.exam_id))
     
-
-
-@community_b.route('/community/ramadan/<int:id>/delete', methods=['GET','POST'])
+@community_b.route('/community/ramadan/<int:id>/score')
 @login_required
-def delete_exam(id):
-    if current_user.is_admin :
-        the_exam = Exam.query.get(id)
-        if the_exam :
-            db.session.delete(the_exam)
-            db.session.commit()
-
-        return redirect(url_for('admin.admin'))
+def exam_score(id):
+    exam = Exam.query.get(id)
+    if exam :
+        exam_enrollment = Exam_Enrollments.query.filter_by(user_id=current_user.id, exam_id=id).first()
+        if exam_enrollment :
+            return render_template('exam_score.html', exam=exam_enrollment)
+        
     else :
-            return redirect(url_for('admin.admin'))
-
-
-@community_b.route('/community/ramadan/<int:id>/active', methods=['GET','POST'])
-@login_required
-def active_exam(id):
-    
-    the_exam = Exam.query.get(id)
-
-    if the_exam:
-        # 1. If the selected exam is ALREADY active, just deactivate it.
-        if the_exam.active:
-            the_exam.active = False
-        else:
-            # 2. If we are activating a new exam, deactivate the old one FIRST (if it exists).
-            activated_exam = Exam.query.filter_by(active=True).first()
-            if activated_exam:
-                activated_exam.active = False
-            
-            # 3. Now activate the target exam.
-            the_exam.active = True
-
-        db.session.commit()
-
-        return redirect(url_for('admin.admin'))
-    else :
-        return redirect(url_for('admin.admin'))
+        return redirect(url_for('community.ramadan_comp'))
     
 @community_b.route('/community/ramadan/leaderboard')
 @login_required
@@ -329,6 +247,6 @@ def leader_board():
     ).order_by(
         func.sum(Exam_Enrollments.score).desc(), 
         func.sum(Exam_Enrollments.time).asc()
-    ).limit(10).all()
+    ).limit(200).all()
 
     return render_template('leader_board.html', students=top_students)

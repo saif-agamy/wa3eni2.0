@@ -92,28 +92,3 @@ def logout():
 def profile(id):
     user = User.query.get_or_404(id)
     return render_template('profile.html', user=user)
-
-@auth_b.route('/auth/user/<int:id>/set_admin/')
-@login_required
-def set_admin(id):
-    if current_user.is_admin :
-        if not current_user.id == id :
-            user = User.query.get_or_404(id)
-            user.set_admin()
-            db.session.commit()
-
-        return redirect(url_for('admin.admin'))
-    
-    else : return redirect(url_for('home.home'))
-
-@auth_b.route('/auth/user/<int:id>/verify/')
-@login_required
-def verify(id):
-    if current_user.is_admin :
-        user = User.query.get_or_404(id)
-        user.verify()
-        db.session.commit()
-
-        return redirect(url_for('admin.admin'))
-    
-    else : return redirect(url_for('home.home'))

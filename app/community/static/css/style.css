@@ -39,3 +39,34 @@ body {
 .liked i::before {
     content: "\f415"; /* Filled heart icon */
 }
+
+.score-username {
+    color: #e7ac74;
+}
+
+.score-info {
+    border: 3px solid #577fd0;
+    border-radius: 20px;
+    color: #325caf;
+    background-color: #e7ac74;
+}
+
+.score-btn {
+    border: 3px solid #577fd0;
+    border-radius: 10px;
+    color: #325caf;
+    background-color: #e7ac74;
+
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+
+.score-btn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+
+    border: 3px solid #e7ac74;
+    border-radius: 10px;
+    color: #e7ac74;
+    background-color: #325caf;
+}
