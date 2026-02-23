@@ -102,6 +102,7 @@
         <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-users"><span style="color: #e7ac74;">Users</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-content"><span style="color: #e7ac74;">Losts & Founds</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-comp"><span style="color: #e7ac74;">competition</span></button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-exams-score"><span style="color: #e7ac74;">exam scores</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-blog"><span style="color: #e7ac74;">blog posts</span></button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-analytics"><span style="color: #e7ac74;">Analytics</span></button></li>
     </ul>
@@ -243,26 +244,67 @@
         </div>
     </div>
 
-    <div class="row mt-5 mb-5">
-        {% for exam in exams %}
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="container bg-white rounded-4 shadow py-2">
-                    <div class="d-flex">
-                        <h1 class="fw-bold fs-3" style="color: #e7ac74;">Exam id : <span style="color: #325caf;">{{exam.id}}</span></h1>
-                        <h1 class="fw-bold fs-3" style="color: #e7ac74;"> , Day : <span style="color: #325caf;">{{exam.get_display_day()}}</span></h1>
+    <div class="tab-pane fade" id="tab-exams-score">
+        <div class="row mt-5 mb-5 g-4">
+            {% for exam in exams %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="bg-white rounded-4 shadow-sm p-4 h-100 border-top border-4" style="border-color: #325caf !important;">
+                        
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                            <h5 class="fw-bold mb-0" style="color: #325caf;">
+                                <i class="bi bi-journal-text me-2" style="color: #e7ac74;"></i>Exam: {{ exam.id }}
+                            </h5>
+                            <span class="badge rounded-pill px-3 py-2" style="background-color: #e7ac74; color: #fff;">
+                                Day {{ exam.get_display_day() }}
+                            </span>
+                        </div>
+
+                        <div class="participants-list">
+                            {% set ns = namespace(rank=1, found=false) %}
+                            
+                            {% for user in exams_participations %}
+                                {% if user.exam_id == exam.id %}
+                                    {% set ns.found = true %}
+                                    <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded" style="background-color: #f8f9fa;">
+                                        
+                                        <div class="d-flex align-items-center">
+                                            {% if ns.rank == 1 %}
+                                            <span class="fw-bold me-2 fs-5" style="color: #e7ac74; width: 25px;">
+                                                {{ ns.rank }}
+                                            </span>
+                                            {% else %}
+                                            <span class="fw-bold me-2 fs-5" style="color: #adb5bd; width: 25px;">
+                                                {{ ns.rank }}
+                                            </span>
+                                            {% endif %}
+                                            
+                                            <span class="fw-bold text-dark fs-6">{{ user.username }}</span>
+                                        </div>
+                                        
+                                        <div class="text-end">
+                                            <div class="fw-bold" style="color: #325caf;">{{ user.score }} pts</div>
+                                            <div class="text-muted" style="font-size: 0.8rem;">
+                                                <i class="bi bi-stopwatch"></i> {{ user.time }}s
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    {% set ns.rank = ns.rank + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if not ns.found %}
+                                <div class="text-center text-muted py-4 small">
+                                    <i class="bi bi-inbox fs-3 d-block mb-2"></i>
+                                    No participants yet.
+                                </div>
+                            {% endif %}
+                        </div>
+                        
                     </div>
-                    {% for user in exams_participations %}
-                        {% if user.exam_id == exam.id %}
-                            <div class="d-flex">
-                                <p class="fw-bold fs-4 me-3">- {{user.username}}</p>
-                                <p class="fs-4 me-3">score : <span style="color: #e7ac74;">{{user.score}}pts</span></p>
-                                <p class="fs-4 me-3">time : <span style="color: #325caf;">{{user.time}}s</span></p>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 
