@@ -48,7 +48,7 @@ def admin():
     ).order_by(
         Exam_Enrollments.score.desc(),
         Exam_Enrollments.time.asc(),
-    ).all()
+    ).limit(10).all()
 
     return render_template('admin.html', 
         total_users=users_num, 
