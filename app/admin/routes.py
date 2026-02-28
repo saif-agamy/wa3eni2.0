@@ -45,10 +45,10 @@ def admin():
         Exam_Enrollments.time
     ).join(
         Exam_Enrollments, User.id == Exam_Enrollments.user_id
-    ).order_by(
+    ).limit(10).order_by(
         Exam_Enrollments.score.desc(),
         Exam_Enrollments.time.asc(),
-    ).limit(10).all()
+    ).all()
 
     return render_template('admin.html', 
         total_users=users_num, 
