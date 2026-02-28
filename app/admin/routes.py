@@ -40,15 +40,15 @@ def admin():
 
     exams_participations = db.session.query(
         User.username, 
-        Exam_Enrollments.exam_id,  # MUST include this!
+        Exam_Enrollments.exam_id,
         Exam_Enrollments.score, 
         Exam_Enrollments.time
     ).join(
         Exam_Enrollments, User.id == Exam_Enrollments.user_id
-    ).limit(10).order_by(
+    ).order_by(
         Exam_Enrollments.score.desc(),
-        Exam_Enrollments.time.asc(),
-    ).all()
+        Exam_Enrollments.time.asc()
+    ).all() # الـ all() في النهاية دائماً
 
     return render_template('admin.html', 
         total_users=users_num, 
