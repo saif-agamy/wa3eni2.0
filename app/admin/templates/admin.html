@@ -263,7 +263,7 @@
                             {% set ns = namespace(rank=1, found=false) %}
                             
                             {% for user in exams_participations %}
-                                {% if user.exam_id == exam.id and ns.rank <= 10 %}
+                                {% if user.exam_id == exam.id %}
                                     {% set ns.found = true %}
                                     <div class="d-flex justify-content-between align-items-center mb-3 p-2 rounded" style="background-color: #f8f9fa;">
                                         
