@@ -43,7 +43,7 @@ def admin():
         Exam_Enrollments.exam_id,
         Exam_Enrollments.score, 
         Exam_Enrollments.time
-    ).limit(10).join(
+    ).join(
         Exam_Enrollments, User.id == Exam_Enrollments.user_id
     ).order_by(
         Exam_Enrollments.score.desc(),
