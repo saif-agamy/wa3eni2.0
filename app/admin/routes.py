@@ -48,7 +48,7 @@ def admin():
     ).order_by(
         Exam_Enrollments.score.desc(),
         Exam_Enrollments.time.asc()
-    ).all() # الـ all() في النهاية دائماً
+    ).limit(10).all()
 
     return render_template('admin.html', 
         total_users=users_num, 
@@ -103,7 +103,8 @@ def add_exam():
         if Exams_same_day is None :
             new_exam = Exam(
                 day=Exam_Form.day.data,
-                category=Exam_Form.category.data
+                category=Exam_Form.category.data,
+                active=False
             )
 
             db.session.add(new_exam)

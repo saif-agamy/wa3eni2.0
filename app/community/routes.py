@@ -36,24 +36,21 @@ def post(id):
 @community_b.route("/community/share/<int:id>/", methods=['GET','POST'])
 @login_required
 def share(id):
-    if current_user.verified :
-        form = PostForm()
-        if form.validate_on_submit():
-            post = Post(
-                author_id=id,
-                title=form.title.data,
-                content=form.content.data,
-                flag=form.flag.data,
-            )
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(
+            author_id=id,
+            title=form.title.data,
+            content=form.content.data,
+            flag=form.flag.data,
+        )
 
-            db.session.add(post)
-            db.session.commit()
+        db.session.add(post)
+        db.session.commit()
 
-            return redirect(url_for('community.blog'))
-
-        return render_template('create_post.html', form=form)
-    else :
         return redirect(url_for('community.blog'))
+
+    return render_template('create_post.html', form=form)
 
 
 @community_b.route("/community/post/<int:id>/like/", methods=['GET','POST'])

@@ -257,21 +257,17 @@
 
         .main-photo-wrapper {
             position: relative;
-            border-radius: 50px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 40px 80px rgba(50, 92, 175, 0.2);
         }
 
         .main-photo-wrapper img {
             width: 100%;
-            height: 600px;
+            height: 800px;
             object-fit: cover;
-            transform: scale(1.05);
-            transition: transform 0.8s ease;
-        }
-
-        .main-photo-wrapper:hover img {
             transform: scale(1);
+            transition: transform 0.8s ease;
         }
 
         /* Gold Ribbon Overlay */
@@ -466,6 +462,400 @@
                 flex: 0 1 100%; /* 1 per row on phones */
             }
         }
+
+        /* Section Styling */
+        .union-honors {
+            direction: rtl;
+            background-color: transparent; /* Fits your existing layout */
+        }
+
+        .union-title {
+            color: #e7ac74;
+            letter-spacing: 1px;
+        }
+
+        .union-line {
+            height: 4px;
+            width: 60px;
+            background: #577fd0;
+            margin-top: 15px;
+            border-radius: 2px;
+        }
+
+        /* Member Card */
+        .member-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(231, 172, 116, 0.2);
+            text-align: center;
+        }
+
+        .member-card:hover {
+            transform: translateY(-15px);
+            border-color: #e7ac74;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Image Container & Overlay */
+        .member-img-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Keeps images perfectly square */
+            overflow: hidden;
+        }
+
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures photos don't stretch */
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-img {
+            transform: scale(1.1);
+        }
+
+        .member-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(50, 92, 175, 0.9), transparent);
+            padding: 20px 10px 10px;
+        }
+
+        .member-role {
+            background: #e7ac74;
+            color: #325caf;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Info Section */
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .member-dept {
+            color: #e7ac74;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        /* تنسيق قسم التكريمات */
+        .official-awards {
+            direction: rtl;
+            background: linear-gradient(180deg, rgba(50, 92, 175, 0.05) 0%, transparent 100%);
+        }
+
+        .awards-main-title {
+            color: #e7ac74; /* اللون الذهبي */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .award-underline {
+            height: 4px;
+            width: 100px;
+            background: linear-gradient(90deg, #325caf, #e7ac74, #325caf);
+            border-radius: 2px;
+            margin-top: 15px;
+        }
+
+        /* بطاقة التكريم */
+        .award-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(231, 172, 116, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .award-item:hover {
+            transform: scale(1.03);
+            border-color: #e7ac74;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* إطار الصورة */
+        .award-frame {
+            position: relative;
+            border: 8px solid #f8f9fa; /* إطار أبيض داخلي */
+            outline: 2px solid #e7ac74; /* إطار ذهبي خارجي */
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .award-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .award-item:hover .award-img {
+            transform: scale(1.1);
+        }
+
+        /* سنة التكريم */
+        .award-year {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e7ac74;
+            color: #325caf;
+            font-weight: bold;
+            padding: 2px 12px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* نصوص التكريم */
+        .award-body {
+            text-align: right;
+            padding: 10px 5px;
+        }
+
+        .issuer-label {
+            display: block;
+            color: #577fd0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .award-text {
+            color: #ffffff;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            margin-bottom: 0;
+        }
+
+        .visits-section {
+            direction: rtl;
+        }
+
+        .visits-title {
+            color: #e7ac74;
+        }
+
+        .visits-line {
+            height: 4px;
+            width: 80px;
+            background: #e7ac74;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* بطاقة الزيارة */
+        .visit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .visit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #577fd0;
+        }
+
+        /* الشعار العلوي للزيارة */
+        .visit-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .academic .visit-badge { background: rgba(50, 92, 175, 0.8); } /* أزرق للجامعة */
+        .charity .visit-badge { background: rgba(231, 116, 116, 0.8); } /* وردي للخير */
+
+        /* غلاف الصورة */
+        .visit-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .visit-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .visit-card:hover .visit-img {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        /* محتوى النص */
+        .visit-content {
+            padding: 25px;
+        }
+
+        .visit-name {
+            color: #e7ac74;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .visit-desc {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .visit-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
+        .visit-date {
+            color: #577fd0;
+            font-size: 0.85rem;
+        }
+
+        .visit-date i {
+            margin-left: 5px;
+        }
+
+        /* Section Basics */
+        .memories-section {
+            direction: rtl;
+            overflow-x: hidden; /* Prevents scrollbar during animation */
+        }
+
+        .memories-title {
+            color: #e7ac74;
+        }
+
+        .memories-line {
+            height: 4px;
+            width: 80px;
+            background: #577fd0;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* Container for the stack */
+        .stack-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px; /* Width of the polaroid */
+            height: 450px;    /* Height of the polaroid */
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        /* Individual Cards */
+        .stack-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 8px solid #fff; /* Polaroid white border */
+            border-bottom-width: 25px; /* Thicker bottom border */
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+    
+        /* Default state for cards hidden deep in the stack */
+            opacity: 0;
+            transform: scale(0.8) translateY(-40px);
+            pointer-events: none; /* Can't click hidden cards */
+        }
+
+        /* The Image inside the card */
+        .stack-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* The Caption */
+        .stack-card .stack-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #e7ac74;
+            padding: 15px 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* --- THE STACKING LOGIC --- */
+        /* Top Card */
+        .stack-card:last-child {
+            opacity: 1;
+            transform: scale(1) translateY(0) rotate(0deg);
+            z-index: 3;
+            pointer-events: auto; /* Only top card is clickable */
+        }
+
+        /* Second Card (Behind Top) */
+        .stack-card:nth-last-child(2) {
+            opacity: 1;
+            transform: scale(0.95) translateY(-20px) rotate(4deg);
+            z-index: 2;
+        }
+
+        /* Third Card (Deepest visible) */
+        .stack-card:nth-last-child(3) {
+            opacity: 1;
+            transform: scale(0.9) translateY(-40px) rotate(-3deg);
+            z-index: 1;
+        }
+
+        /* The Animation Class when moving out */
+        .stack-card.slide-away {
+            transform: translateX(120%) rotate(20deg) scale(0.9);
+            opacity: 0;
+            z-index: 4; /* Keeps it above others while sliding out */
+        }
+
+        /* Hint Animation */
+        .pulse-anim {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.5; }
+        }
     </style>
 </head>
 
@@ -495,8 +885,60 @@
                     <img src="{{url_for('school.static', filename='media/science.jpg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
                 </div>
                 <div class="card-body p-4">
-                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">رفع الوعي العلمي وتوظيف العلوم</h5>
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">رفع الوعي العلمي وتوظيف العلوم حياتنا اليومية</h5>
                     <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">ندوة علمية تهدف الى رفع الوعي العلمي بكيفية توظيف المواد العلمية و الاستفادة منها في حياتنا العملية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card seminar-card h-100 border-0 shadow-sm">
+                <div class="img-hover-zoom">
+                    <span class="seminar-badge">قومي</span>
+                    <img src="{{url_for('school.static', filename='media/national-projects.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">تعريف الطلاب بالمشروعات القومية و توعيتهم بأهمية الحفاظ على التراث المصري</h5>
+                    <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">ندوة تثقيفية تهدف لرفع الوعي القومي للطلاب و تعريفهم بالمشروعات القومية الجاري تنفيذها في جمهورية مصر العربية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card seminar-card h-100 border-0 shadow-sm">
+                <div class="img-hover-zoom">
+                    <span class="seminar-badge">تكنولوجي</span>
+                    <img src="{{url_for('school.static', filename='media/google.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">التكنولوجية و البرمجة في عصر الذكاء الأصطناعي</h5>
+                    <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">ندوة تهدف الى توعية الطلاب بالتغيرات الحادثة في المجالات التكنولوجيا اثر الذكاء الأصطناعي و كيفية مواجهتها عن طريق الأستفادة منها</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card seminar-card h-100 border-0 shadow-sm">
+                <div class="img-hover-zoom">
+                    <span class="seminar-badge">تكنولوجي</span>
+                    <img src="{{url_for('school.static', filename='media/games.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">مخاطر ادمان الألعاب الألكرتونية</h5>
+                    <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">الألعاب الألكترونية لها فوائد ولاكن الأكثار منها يؤدي الى ادمانها و بالتالي التعرض لمخاطرها العديدة و التي تؤثر بالسلب على حياتنا اليومية</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card seminar-card h-100 border-0 shadow-sm">
+                <div class="img-hover-zoom">
+                    <span class="seminar-badge">علمي</span>
+                    <img src="{{url_for('school.static', filename='media/science2.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">ندوة تسلسل التفعالات الكيميائية و الجدول الدوري</h5>
+                    <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">تغيير الطلاب نظرتهم عن الكيمياء ساعدتهم على ادراك التفاعلات الكيميائية و فهم الجدول الدوري بطريقة صحيحة و مرتبة</p>
                 </div>
             </div>
         </div>
@@ -883,7 +1325,7 @@
     <div class="row g-4">
         <div class="col-12 col-lg-6">
             <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
-                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">مسابقة الشطرنج</h3>
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">مسابقة الشطرنج على مستوى مدرسة جمال عبد الناصر</h3>
                 <div class="row g-2">
                     <div class="col-6">
                         <img src="{{url_for('school.static', filename='media/comp3.jpeg')}}" alt="Competition Action" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
@@ -897,13 +1339,121 @@
 
         <div class="col-12 col-lg-6">
             <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
-                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">دوري كرة القدم</h3>
+                <h4 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">مسابقة الشطرنج بين مدرسة جمال عبد الناصر و مدرسة منهل المعرفة</h4>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/chess3.jpeg')}}" alt="Competition Action" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/chess2.jpeg')}}" alt="Competition Award" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">دوري كرة القدم بمدرسة جمال عبج الناصر</h3>
                 <div class="row g-2">
                     <div class="col-6">
                         <img src="{{url_for('school.static', filename='media/comp1.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
                     </div>
                     <div class="col-6">
                         <img src="{{url_for('school.static', filename='media/comp2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="visits-section py-5">
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-12 animate-fade-down">
+                <h2 class="display-5 fw-bold visits-title">زياراتنا</h2>
+                <p class="text-white-50 fs-5">بين شغف العلم وواجب العطاء.. بصماتنا في كل مكان</p>
+                <div class="visits-line mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="visit-card academic">
+                    <div class="visit-badge"><i class="fas fa-university"></i> زيارة علمية</div>
+                    <div class="visit-img-wrapper">
+                        <img src="{{url_for('school.static', filename='media/university.jpeg')}}" alt="زيارة الجامعة" class="visit-img">
+                    </div>
+                    <div class="visit-content">
+                        <h3 class="visit-name">زيارة جامعة فاروس</h3>
+                        <p class="visit-desc text-primary">استكشاف كليات الهندسة والذكاء الاصطناعي لتعريف الطلاب بمساراتهم المستقبلية ولقاء أساتذة الجامعة.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="visit-card charity">
+                    <div class="visit-badge"><i class="fas fa-heart"></i> لمسة وفاء</div>
+                    <div class="visit-img-wrapper">
+                        <img src="{{url_for('school.static', filename='media/workshop5.jpeg')}}" alt="زيارة دار الأيتام" class="visit-img">
+                    </div>
+                    <div class="visit-content">
+                        <h3 class="visit-name">زيارة دار الأيتام</h3>
+                        <p class="visit-desc text-primary">يوم ترفيهي بدار الأيتام لرسم البسمة على وجوه الأطفال وتوزيع الهدايا، ضمن دورنا المجتمعي كطلاب.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="official-awards py-5">
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-12 animate-fade-down">
+                <h2 class="display-5 fw-bold awards-main-title">تكريمات المكتب التنفيذي</h2>
+                <p class="text-black-50 fs-5">تكريمات رسمية من الجهات التعليمية الممختلفة </p>
+                <div class="award-underline mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="award-item">
+                    <div class="award-frame">
+                        <img src="{{url_for('school.static', filename='media/honor2.jpeg')}}" alt="تكريم المديرية" class="award-img">
+                        <div class="award-year">2025</div>
+                    </div>
+                    <div class="award-body">
+                        <h4><span class="text-primary fw-bold">تكريم ادارة المدرسة لفريق المكتب التنفيذي</span></h4>
+                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى ادارة منتزة اول التعليمية</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="award-item">
+                    <div class="award-frame">
+                        <img src="{{url_for('school.static', filename='media/honor3.jpeg')}}" alt="تكريم الوزارة" class="award-img">
+                        <div class="award-year">2026</div>
+                    </div>
+                    <div class="award-body">
+                        <h4><span class="text-primary fw-bold">تكريم مدير مديرية التربية و التعليم لفريق المكتب التنغيذي</span></h4>
+                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="award-item">
+                    <div class="award-frame">
+                        <img src="{{url_for('school.static', filename='media/honor1.jpeg')}}" alt="شهادة تقدير" class="award-img">
+                        <div class="award-year">2026</div>
+                    </div>
+                    <div class="award-body">
+                        <h4><span class="text-primary fw-bold">تكريم مركز اعداد القادة بمدرسة جمال عبد الناصر لفريق المكتب التنفيذي</span></h4>
+                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية</h6>
                     </div>
                 </div>
             </div>
@@ -920,57 +1470,227 @@
 
     <div class="cinematic-container">
         <div class="main-photo-wrapper">
-            <div class="ribbon-overlay">القادة المبدعون ٢٠٢٦</div>
-            <img src="{{url_for('school.static', filename='media/team.jpg')}}" alt="Official School Team">
+            <img src="{{url_for('school.static', filename='media/team2.jpeg')}}" alt="Official School Team">
         </div>
     </div>
+</section>
 
-    <div class="executive-grid" dir="rtl">
-    <div class="executive-card leader-rank">
-        <div class="rank-icon"><i class="fas fa-star"></i></div>
-        <h3 class="name-title">يوسف وسام-الدين</h3>
-        <p class="role-subtitle">أمين المدرسة</p>
-    </div>
+<section class="union-honors py-5">
+    <div class="container">
+        <div class="row mb-5 text-center">
+            <div class="col-12">
+                <h2 class="display-4 fw-bold union-title">أعضاء المكتب التنفيذي</h2>
+                <p class="text-white-50 fs-5">قيادات شابة تصنع التغيير</p>
+                <div class="union-line mx-auto"></div>
+            </div>
+        </div>
 
-    <div class="executive-card leader-rank">
-        <div class="rank-icon"><i class="fas fa-star"></i></div>
-        <h3 class="name-title">فادي عمر</h3>
-        <p class="role-subtitle">أمين مساعد المدرسة</p>
-    </div>
+        <div class="row g-5 justify-content-center">
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/sabah.png')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">الرائد العام</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">د.صباح عبد الصمد</h4>
+                    </div>
+                </div>
+            </div>
 
-    <div class="executive-card">
-        <div class="rank-icon"><i class="fas fa-flask"></i></div>
-        <h3 class="name-title">سيف الدين محمد</h3>
-        <p class="role-subtitle">مقرر اللجنة العلمية</p>
-    </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/kout.png')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">مسؤول الأتحاد</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">أ.قوت القلوب محمود</h4>
+                    </div>
+                </div>
+            </div>
 
-    <div class="executive-card">
-        <div class="rank-icon"><i class="fas fa-book"></i></div>
-        <h3 class="name-title">عبد الرحمن كمال</h3>
-        <p class="role-subtitle">مقرر اللجنة الثقافية الدينية</p>
-    </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/yousef.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">الأمين</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">يوسف وسام الدين</h4>
+                    </div>
+                </div>
+            </div>
 
-    <div class="executive-card">
-        <div class="rank-icon"><i class="fas fa-users"></i></div>
-        <h3 class="name-title">يحيى اشرف</h3>
-        <p class="role-subtitle">مقرر اللجنة الاجتماعية</p>
-    </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/fady.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">الأمين المساعد</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">فادي عمر</h4>
+                    </div>
+                </div>
+            </div>
 
-    <div class="executive-card">
-        <div class="rank-icon"><i class="fas fa-palette"></i></div>
-        <h3 class="name-title">زياد محمد</h3>
-        <p class="role-subtitle">مقرر اللجنة الفنية</p>
-    </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/saif.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">مقرر اللجنة العلمية</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">سيف الدين محمد</h4>
+                    </div>
+                </div>
+            </div>
 
-    <div class="executive-card">
-        <div class="rank-icon"><i class="fas fa-medal"></i></div>
-        <h3 class="name-title">محمد علي</h3>
-        <p class="role-subtitle">مقرر اللجنة الرياضية الكشفية</p>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/abdelrahman.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">مقرر اللجنة الثقافية الدينية</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">عبد الرحمن كمال</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/yahia.png')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role text-black fw-bold">مقرر اللجنة الأجتماعية</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">يحيى اشرف</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/ziad.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">مقرر اللجنة الفنية</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">زياد محمد</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="member-card">
+                    <div class="member-img-container">
+                        <img src="{{url_for('school.static', filename='media/mohamed.jpeg')}}" alt="Member Name" class="member-img">
+                        <div class="member-overlay">
+                            <span class="member-role">مقرر اللجنة الرياضية الكشفية</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4 class="member-name text-black fw-bold">محمد علي</h4>
+                    </div>
+                </div>
+            </div>
+
+            </div>
     </div>
-</div>
+</section>
+
+<section class="memories-section py-5">
+    <div class="container text-center">
+        <div class="row mb-5">
+            <div class="col-12 animate-fade-down">
+                <h2 class="display-5 fw-bold memories-title">ذكرياتنا الخالدة</h2>
+                <p class="text-white-50 fs-5">لحظات لا تُنسى جمعتنا في رحاب الأنشطة الطلابية</p>
+                <div class="memories-line mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="stack-container" id="memoryStack">
+                    
+                    <div class="stack-card">
+                        <img src="memory1.jpg" alt="ذكرى 1">
+                        <div class="stack-caption">إفطار رمضان 2023</div>
+                    </div>
+
+                    <div class="stack-card">
+                        <img src="memory2.jpg" alt="ذكرى 2">
+                        <div class="stack-caption">حفل ختام الأنشطة</div>
+                    </div>
+
+                    <div class="stack-card">
+                        <img src="memory3.jpg" alt="ذكرى 3">
+                        <div class="stack-caption">رحلة معرض الكتاب</div>
+                    </div>
+
+                    <div class="stack-card">
+                        <img src="memory4.jpg" alt="ذكرى 4">
+                        <div class="stack-caption">تكريم أوائل الدفعة</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <p class="mt-5 text-white-50 hint-text pulse-anim">
+            <i class="fas fa-hand-pointer me-2"></i> اضغط على الصورة لمشاهدة التالي
+        </p>
+    </div>
 </section>
 
 <footer class="text-center py-4 border-top">
     <p>&copy; 2026 Wa3eni Built with Passion.</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const stackContainer = document.getElementById('memoryStack');
+
+        if(stackContainer) {
+            stackContainer.addEventListener('click', function() {
+                // Get all cards
+                const cards = stackContainer.querySelectorAll('.stack-card');
+                if (cards.length <= 1) return; // Need at least 2 cards to cycle
+
+                // The top card is visually the LAST element in the DOM
+                const topCard = cards[cards.length - 1];
+
+                // 1. Add the slide-away animation class
+                topCard.classList.add('slide-away');
+
+                // 2. Wait for the animation to finish (600ms matches our CSS)
+                setTimeout(() => {
+                    // Remove the animation class
+                    topCard.classList.remove('slide-away');
+                    
+                    // Move the top card to the BEGINNING of the container (bottom of the stack)
+                    stackContainer.prepend(topCard);
+                }, 600); 
+            });
+        }
+    });
+</script>
 {% endblock %}

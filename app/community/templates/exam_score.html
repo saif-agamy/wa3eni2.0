@@ -1,41 +1,57 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <head>
-        <link rel="stylesheet" href="{{url_for('community.static', filename='css/style.css')}}">
-    </head>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{url_for('community.static', filename='css/style.css')}}">
+</head>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="container-fluid d-flex justify-content-center">
-                <h1 class="fw-bold display-1 score-username">{{current_user.username}}</h1>
+<div class="container py-5 result-page">
+    <div class="row mb-5">
+        <div class="col-12 text-center animate-fade-down">
+            <h2 class="text-white-50 mb-0">عاش!</h2>
+            <h1 class="fw-bold display-2 score-username">{{current_user.username}}</h1>
+            <div class="divider mx-auto"></div>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-5 col-md-6">
+            <div class="score-card animate-pop-in">
+                <div class="card-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="card-title">نقاطك اليوم</h3>
+                <div class="score-display">
+                    <span class="number">{{exam.score}}</span>
+                    <span class="unit">نقطة</span>
+                </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-lg-6 col-sm-12 mt-3">
-                <h3 class="display-6 fw-bold text-white" dir="rtl">نقاطك في أسئلة اليوم</h3>
-                <div class="container-fluid score-info d-flex justify-content-center">
-                        <h3 class="display-3" dir="rtl">({{exam.score}}) نقاط</h3>
+
+        <div class="col-lg-5 col-md-6">
+            <div class="score-card animate-pop-in" style="animation-delay: 0.2s;">
+                <div class="card-icon">
+                    <i class="fas fa-stopwatch"></i>
                 </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-                <h3 class="display-6 fw-bold text-white" dir="rtl">الوقت المستغرق لحل أسئلة اليوم</h3>
-                <div class="container-fluid score-info d-flex justify-content-center">
-                    <h3 class="display-3" dir="rtl">({{exam.time}}) ثانية</h3>               
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-lg-6 col-sm-12 mt-3">
-                <div class="container-fluid d-flex justify-content-center">
-                    <a href="{{url_for('community.leader_board')}}" class="score-btn p-2 fs-2">الذهاب للمراكز</a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 mt-3">
-                <div class="container-fluid d-flex justify-content-center">
-                    <a href="{{url_for('community.ramadan_comp')}}" class="score-btn p-2 fs-2">الذهاب للصفحة الرئيسية</a>
+                <h3 class="card-title">الوقت المستغرق</h3>
+                <div class="score-display">
+                    <span class="number">{{exam.time}}</span>
+                    <span class="unit">ثانية</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row mt-5 pt-4">
+        <div class="col-12 d-flex flex-column flex-md-row justify-content-center gap-4">
+            <a href="{{url_for('community.leader_board')}}" class="score-btn secondary">
+                <i class="fas fa-list-ol ms-2"></i> جدول الترتيب
+            </a>
+            <a href="{{url_for('community.ramadan_comp')}}" class="score-btn primary">
+                <i class="fas fa-home ms-2"></i> الصفحة الرئيسية
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

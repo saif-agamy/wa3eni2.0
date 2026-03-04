@@ -40,33 +40,126 @@ body {
     content: "\f415"; /* Filled heart icon */
 }
 
+/* Container Background (Optional: Add to your body or a wrapper) */
+.result-page {
+    min-height: 80vh;
+    direction: rtl;
+}
+
+/* Typography & Accents */
 .score-username {
     color: #e7ac74;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.score-info {
-    border: 3px solid #577fd0;
-    border-radius: 20px;
-    color: #325caf;
-    background-color: #e7ac74;
-}
-
-.score-btn {
-    border: 3px solid #577fd0;
+.divider {
+    height: 4px;
+    width: 80px;
+    background: #e7ac74;
     border-radius: 10px;
-    color: #325caf;
-    background-color: #e7ac74;
+    margin-top: 10px;
+}
 
-    transition: all 0.5s ease;
+/* The Stat Cards */
+.score-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid #577fd0;
+    border-radius: 30px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.score-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(50, 92, 175, 0.3);
+    border-color: #e7ac74;
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: #e7ac74;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.score-display {
+    background: #e7ac74;
+    color: #325caf;
+    border-radius: 20px;
+    padding: 10px 30px;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.score-display .number {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.score-display .unit {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Buttons */
+.score-btn {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 15px;
     text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 250px;
+}
+
+.score-btn.primary {
+    background: #e7ac74;
+    color: #325caf;
+    border: 3px solid #e7ac74;
+}
+
+.score-btn.secondary {
+    background: transparent;
+    color: #e7ac74;
+    border: 3px solid #e7ac74;
 }
 
 .score-btn:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-
-    border: 3px solid #e7ac74;
-    border-radius: 10px;
+    transform: scale(1.05);
+    background: #325caf;
     color: #e7ac74;
-    background-color: #325caf;
+    border-color: #577fd0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Simple Animations */
+.animate-fade-down {
+    animation: fadeDown 0.8s ease-out;
+}
+
+.animate-pop-in {
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
