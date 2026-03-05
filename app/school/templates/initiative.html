@@ -555,96 +555,8 @@
             opacity: 0.8;
         }
 
-        /* تنسيق قسم التكريمات */
-        .official-awards {
-            direction: rtl;
-            background: linear-gradient(180deg, rgba(50, 92, 175, 0.05) 0%, transparent 100%);
-        }
+        
 
-        .awards-main-title {
-            color: #e7ac74; /* اللون الذهبي */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .award-underline {
-            height: 4px;
-            width: 100px;
-            background: linear-gradient(90deg, #325caf, #e7ac74, #325caf);
-            border-radius: 2px;
-            margin-top: 15px;
-        }
-
-        /* بطاقة التكريم */
-        .award-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 15px;
-            border: 1px solid rgba(231, 172, 116, 0.2);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .award-item:hover {
-            transform: scale(1.03);
-            border-color: #e7ac74;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* إطار الصورة */
-        .award-frame {
-            position: relative;
-            border: 8px solid #f8f9fa; /* إطار أبيض داخلي */
-            outline: 2px solid #e7ac74; /* إطار ذهبي خارجي */
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .award-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .award-item:hover .award-img {
-            transform: scale(1.1);
-        }
-
-        /* سنة التكريم */
-        .award-year {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #e7ac74;
-            color: #325caf;
-            font-weight: bold;
-            padding: 2px 12px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-        }
-
-        /* نصوص التكريم */
-        .award-body {
-            text-align: right;
-            padding: 10px 5px;
-        }
-
-        .issuer-label {
-            display: block;
-            color: #577fd0;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .award-text {
-            color: #ffffff;
-            font-size: 1.2rem;
-            line-height: 1.4;
-            margin-bottom: 0;
-        }
 
         .visits-section {
             direction: rtl;
@@ -856,6 +768,384 @@
             50% { opacity: 1; transform: scale(1.05); }
             100% { opacity: 0.5; }
         }
+
+        /* --- الألوان والمتغيرات الأساسية للقسم --- */
+        .official-awards-modern {
+            direction: rtl;
+            background-color: #fcfcfd;
+            background-image: radial-gradient(circle at 50% 0%, rgba(50, 92, 175, 0.08) 0%, transparent 70%);
+            overflow: hidden;
+        }
+
+        .text-gold { color: #e7ac74; }
+        .text-primary-dark { color: #325caf; }
+
+        .modern-title {
+            color: #1a2b4c;
+            letter-spacing: -0.5px;
+        }
+
+        .modern-underline {
+            height: 5px;
+            width: 80px;
+            background: linear-gradient(90deg, #325caf, #e7ac74);
+            border-radius: 50px;
+            margin-top: 15px;
+        }
+
+        /* --- تصميم البطاقة العصرية --- */
+        .modern-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.02);
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(50, 92, 175, 0.12);
+        }
+
+        /* --- حاوية الصور والصور --- */
+        .modern-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            /* التخلص من الفائض مهم للبطاقات الجانبية، لكننا سنلغيه في الوسطى */
+            margin-bottom: 20px;
+        }
+
+        .side-card .modern-image-wrapper {
+            overflow: hidden;
+        }
+
+        .modern-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.6s ease;
+        }
+
+        .side-card:hover .modern-img {
+            transform: scale(1.08);
+        }
+
+        /* --- شارة السنة (الباج) --- */
+        .modern-year-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #325caf;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .gold-badge {
+            background: linear-gradient(135deg, #e7ac74, #d6985c);
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        /* --- نصوص البطاقة --- */
+        .modern-card-body h5 {
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .modern-desc {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* =========================================
+        تأثير البطاقة الوسطى (المركزية المزدوجة)
+        ========================================= */
+
+        .center-card {
+            padding: 30px;
+            transform: scale(1.05);
+            z-index: 5;
+            border-top: 5px solid #e7ac74; /* خط ذهبي مميز من الأعلى */
+        }
+
+        .center-card:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        /* حاوية الصور المزدوجة */
+        .double-stack {
+            height: 280px;
+            perspective: 1000px;
+        }
+
+        .double-stack .modern-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 85%;
+            height: 250px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 6px solid #fff; /* إطار أبيض كلاسيكي للصور */
+        }
+
+        /* الصورة في الخلف */
+        .stack-back {
+            right: auto;
+            left: 0;
+            transform: rotate(-6deg) translate(-10px, 15px) scale(0.95);
+            z-index: 1;
+            filter: brightness(0.8);
+        }
+
+        /* الصورة في الأمام */
+        .stack-front {
+            right: 0;
+            left: auto;
+            transform: rotate(3deg) translate(15px, 0);
+            z-index: 2;
+        }
+
+        /* تأثير احترافي عند مرور الماوس: الصور تتوزع (Fan Out Effect) */
+        .center-card:hover .stack-back {
+            transform: rotate(-12deg) translate(-30px, 25px) scale(0.95);
+            filter: brightness(1);
+        }
+
+        .center-card:hover .stack-front {
+            transform: rotate(6deg) translate(30px, -5px);
+        }
+
+        /* تعديلات للشاشات الصغيرة */
+        @media (max-width: 991px) {
+            .center-card {
+                transform: scale(1);
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .center-card:hover {
+                transform: translateY(-10px);
+            }
+            .double-stack {
+                height: 240px;
+            }
+            .double-stack .modern-img {
+                width: 90%;
+                height: 220px;
+            }
+        }
+
+        /* =========================================
+        آلية تبديل الصور عند النقر (Click to Swap Mechanism)
+        ========================================= */
+
+        /* 1. نقل الصورة الخلفية للأمام عند النقر */
+        .double-stack.is-swapped .stack-back {
+            z-index: 3; /* دفعها للأمام */
+            transform: rotate(3deg) translate(15px, 0) scale(1); /* أخذ مكان الصورة الأمامية */
+            filter: brightness(1); /* إلغاء التعتيم */
+        }
+
+        /* 2. إرجاع الصورة الأمامية للخلف عند النقر */
+        .double-stack.is-swapped .stack-front {
+            z-index: 1; /* سحبها للخلف */
+            transform: rotate(-6deg) translate(-10px, 15px) scale(0.95); /* أخذ مكان الصورة الخلفية */
+            filter: brightness(0.8); /* تعتيمها قليلاً */
+        }
+
+        /* 3. عكس تأثير الانتشار (Fan Out) عند التمرير بالماوس والبطاقة مبدّلة */
+        .center-card:hover .double-stack.is-swapped .stack-back {
+            transform: rotate(6deg) translate(30px, -5px);
+        }
+
+        .center-card:hover .double-stack.is-swapped .stack-front {
+            transform: rotate(-12deg) translate(-30px, 25px) scale(0.95);
+            filter: brightness(1); /* إضاءة الصورة المختبئة لتشجيع المستخدم على النقر مجدداً */
+        }
+
+        /* =========================================
+        تنسيق قسم زيارة المدير (تصميم المذكرة الاستراتيجية)
+        ========================================= */
+        .manager-inspection {
+            direction: rtl;
+            background-color: #f4f6f9;
+            /* خلفية هندسية خفيفة جداً توحي بالخطط والورق */
+            background-image: 
+                linear-gradient(#e1e5ee 1px, transparent 1px),
+                linear-gradient(90deg, #e1e5ee 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* حاوية القصة الرئيسية (تسمح بالتداخل) */
+        .inspection-story-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        /* 1. تنسيق "مذكرة" النص (الحلفية) */
+        .inspection-memo-card {
+            background: #ffffff;
+            border-radius: 4px; /* زوايا حادة قليلاً لتبدو كالورقة */
+            padding: 60px 80px 60px 60px; /* مسافة إضافية من اليمين بسبب تداخل الصورة */
+            box-shadow: 2px 5px 20px rgba(0,0,0,0.05);
+            width: 65%;
+            position: relative;
+            right: -5%; /* سحبها لليمين قليلاً */
+            z-index: 1;
+            border-right: 8px solid #325caf; /* خط كحلي سميك كحاشية للمذكرة */
+        }
+
+        .memo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .memo-tag {
+            background-color: rgba(50, 92, 175, 0.1);
+            color: #325caf;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .memo-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .inspection-desc {
+            color: #495057;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .signature-line {
+            font-family: 'Cairo', sans-serif; /* أو أي خط عربي مائل إذا توفر */
+            color: #adb5bd;
+            font-size: 1.2rem;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            display: inline-block;
+        }
+
+        /* 2. تنسيق "الأثر" أو الصورة المثبتة (الأمامية) */
+        .inspection-photo-artifact {
+            width: 45%;
+            position: relative;
+            left: -5%; /* سحبها لليسار لتتداخل مع النص */
+            z-index: 2;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .artifact-frame {
+            background: white;
+            padding: 15px;
+            border-radius: 2px;
+            box-shadow: 10px 15px 40px rgba(0,0,0,0.15);
+            /* ميلان خفيف يجعلها تبدو كأنها وضعت يدوياً على اللوحة */
+            transform: rotate(3deg); 
+            position: relative;
+        }
+
+        .artifact-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #eee;
+        }
+
+        /* تأثير "الدبوس" أو المشبك الديكوري */
+        .artifact-pin {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: #e7ac74; /* لون ذهبي */
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 4px solid #fff;
+        }
+
+        .artifact-pin::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 50%;
+        }
+
+        /* حركات الماوس التفاعلية */
+        .inspection-story-wrapper:hover .inspection-photo-artifact {
+            transform: scale(1.02) rotate(0deg); /* الصورة تستقيم وتكبر قليلاً عند النظر إليها */
+        }
+
+        .inspection-story-wrapper:hover .inspection-memo-card {
+            box-shadow: 2px 10px 30px rgba(50, 92, 175, 0.08); /* ظل كحلي خفيف للنص */
+        }
+
+        /* تعديلات للشاشات الصغيرة */
+        @media (max-width: 991px) {
+            .inspection-story-wrapper {
+                flex-direction: column-reverse; /* الصورة أولاً ثم النص في الجوال */
+                padding: 20px 0;
+            }
+
+            .inspection-memo-card, .inspection-photo-artifact {
+                width: 100%;
+                right: 0;
+                left: 0;
+            }
+
+            .inspection-memo-card {
+                margin-top: -50px; /* تداخل عمودي بدلاً من أفقي */
+                padding: 80px 30px 40px 30px;
+                z-index: 1;
+            }
+
+            .inspection-photo-artifact {
+                z-index: 2;
+                margin-bottom: 20px;
+            }
+            
+            .artifact-frame {
+                transform: rotate(0deg); /* إلغاء الميلان في الجوال لشغل مساحة أفضل */
+            }
+            
+            .artifact-img {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 
@@ -920,8 +1210,21 @@
         <div class="col-md-6 col-lg-4">
             <div class="card seminar-card h-100 border-0 shadow-sm">
                 <div class="img-hover-zoom">
+                    <span class="seminar-badge">قيادي</span>
+                    <img src="{{url_for('school.static', filename='media/lead.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3" style="color: #e7ac74;">ندوة سحر القيادة و كيفية التأثير في الأخرين</h5>
+                    <p class="card-text text-muted mb-0" style="font-size: 0.95rem;">قدمها أ/ايهاب صبري مدير مركز اعداد القادة بمدرسة جمال عبد الناصر الثانوية العسكرية</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card seminar-card h-100 border-0 shadow-sm">
+                <div class="img-hover-zoom">
                     <span class="seminar-badge">تكنولوجي</span>
-                    <img src="{{url_for('school.static', filename='media/games.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
+                    <img src="{{url_for('school.static', filename='media/game.jpeg')}}" class="card-img-top" alt="ندوة الوعي العلمي" style="height: 220px; object-fit: cover;">
                 </div>
                 <div class="card-body p-4">
                     <h5 class="fw-bold mb-3" style="color: #e7ac74;">مخاطر ادمان الألعاب الألكرتونية</h5>
@@ -1325,7 +1628,35 @@
     <div class="row g-4">
         <div class="col-12 col-lg-6">
             <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
-                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">مسابقة الشطرنج على مستوى مدرسة جمال عبد الناصر</h3>
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">حصول مدرسة جمال عبد الناصر على المركز الأول في مسابقة دوري المكاتب التنفيذية على مستوى ادارة منتزة اول التعليمية</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/maktab3.jpeg')}}" alt="Competition Action" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/maktab4.jpeg')}}" alt="Competition Award" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">حصول مدرسة جمال عبد الناصر على المركز الأول في مسابقة دوري المكاتب التنفيذية على مستوى مديرية التربية و التعليم بالأسكندرية</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/maktab1.jpeg')}}" alt="Competition Action" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/maktab2.jpeg')}}" alt="Competition Award" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">حصول الطالب محمد علي عبد الستار على المركز الأول في مسابقة الشطرنج على مستوى مدرسة جمال عبد الناصر</h3>
                 <div class="row g-2">
                     <div class="col-6">
                         <img src="{{url_for('school.static', filename='media/comp3.jpeg')}}" alt="Competition Action" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover; transition: transform 0.3s;">
@@ -1360,6 +1691,90 @@
                     </div>
                     <div class="col-6">
                         <img src="{{url_for('school.static', filename='media/comp2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">المسابقة الرمضانية على موقع وعيني</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/ramadan1.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/ramadan2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">مسابقة القراّن الكريم</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/quran.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/quran2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">حصول الطالب يوسف وسام الدين عبد الحميد على المركز الثاني في مسابقة الطالب المثالي على مستوى ادارة منتزة اول التعيمية</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/best1.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/best2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">حصول الطالب علي فهمي عبد المحسن على المركز الأول في مسابقة الخط العربي على مستوى ادارة منتزة اول التعليمية</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/font1.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/font2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #e7ac74;">حصول الطالب علي فهمي عبد المحسن على المركز الأول في مسابقة الخط العربي على مستوى محافظة الأسكندرية</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/font3.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/font4.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="position-relative overflow-hidden rounded-4 shadow-lg bg-dark text-white p-4 competition-card">
+                <h3 class="h4 mb-4 text-center border-bottom pb-3" style="color: #325caf;">حصول الطالب يحيى اشرف على المركز الثاني في مسابقة الأعلامي الصغير</h3>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/media.jpeg')}}" alt="Sport Match" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{url_for('school.static', filename='media/media2.jpeg')}}" alt="Sport Winners" class="img-fluid rounded-3 shadow-sm" style="height: 250px; width: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -1408,56 +1823,95 @@
     </div>
 </section>
 
-<section class="official-awards py-5">
+<section class="official-awards-modern py-5">
     <div class="container">
         <div class="row mb-5 text-center">
             <div class="col-12 animate-fade-down">
-                <h2 class="display-5 fw-bold awards-main-title">تكريمات المكتب التنفيذي</h2>
-                <p class="text-black-50 fs-5">تكريمات رسمية من الجهات التعليمية الممختلفة </p>
-                <div class="award-underline mx-auto"></div>
+                <h2 class="display-5 fw-bold modern-title">تكريمات <span class="text-gold">المكتب التنفيذي</span></h2>
+                <p class="text-muted fs-5 mt-2">تكريمات رسمية من الجهات التعليمية المختلفة</p>
+                <div class="modern-underline mx-auto"></div>
             </div>
         </div>
 
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="award-item">
-                    <div class="award-frame">
-                        <img src="{{url_for('school.static', filename='media/honor2.jpeg')}}" alt="تكريم المديرية" class="award-img">
-                        <div class="award-year">2025</div>
+        <div class="row g-4 align-items-center justify-content-center">
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="modern-card side-card">
+                    <div class="modern-image-wrapper">
+                        <img src="{{url_for('school.static', filename='media/honor2.jpeg')}}" alt="تكريم المديرية" class="modern-img">
+                        <div class="modern-year-badge">2025</div>
                     </div>
-                    <div class="award-body">
-                        <h4><span class="text-primary fw-bold">تكريم ادارة المدرسة لفريق المكتب التنفيذي</span></h4>
-                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى ادارة منتزة اول التعليمية</h6>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="award-item">
-                    <div class="award-frame">
-                        <img src="{{url_for('school.static', filename='media/honor3.jpeg')}}" alt="تكريم الوزارة" class="award-img">
-                        <div class="award-year">2026</div>
-                    </div>
-                    <div class="award-body">
-                        <h4><span class="text-primary fw-bold">تكريم مدير مديرية التربية و التعليم لفريق المكتب التنغيذي</span></h4>
-                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية</h6>
+                    <div class="modern-card-body">
+                        <h5 class="fw-bold text-primary-dark">تكريم ادارة المدرسة لفريق المكتب التنفيذي</h5>
+                        <p class="modern-desc">لحصولهم على المركز الأول على مستوى ادارة منتزة اول التعليمية</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="award-item">
-                    <div class="award-frame">
-                        <img src="{{url_for('school.static', filename='media/honor1.jpeg')}}" alt="شهادة تقدير" class="award-img">
-                        <div class="award-year">2026</div>
+            <div class="col-lg-6 col-md-8 order-md-1 order-lg-2">
+                <div class="modern-card center-card highlight-glow">
+                    <div class="modern-image-wrapper double-stack" onclick="this.classList.toggle('is-swapped')" title="اضغط لتبديل الصور" style="cursor: pointer;">
+                        <img src="{{url_for('school.static', filename='media/honor3.jpeg')}}" alt="صورة إضافية" class="modern-img stack-back">
+                        <img src="{{url_for('school.static', filename='media/honor4.jpeg')}}" alt="تكريم الوزارة" class="modern-img stack-front">
+                        
+                        <div class="modern-year-badge gold-badge shadow-lg">2026</div>
                     </div>
-                    <div class="award-body">
-                        <h4><span class="text-primary fw-bold">تكريم مركز اعداد القادة بمدرسة جمال عبد الناصر لفريق المكتب التنفيذي</span></h4>
-                        <h6 class="award-text text-black ">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية</h6>
+                    
+                    <div class="modern-card-body text-center mt-4">
+                        <h4 class="fw-bold text-primary-dark mb-3">احتفالية تكريم المكتب التنفيذي بحضور مدير الادارة أ/ امجد عاطف</h4>
+                        <p class="modern-desc fs-6">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية، في إنجاز تاريخي يعكس جهود الفريق.</p>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-6 order-md-2 order-lg-3">
+                <div class="modern-card side-card">
+                    <div class="modern-image-wrapper">
+                        <img src="{{url_for('school.static', filename='media/honor1.jpeg')}}" alt="شهادة تقدير" class="modern-img">
+                        <div class="modern-year-badge">2026</div>
+                    </div>
+                    <div class="modern-card-body">
+                        <h5 class="fw-bold text-primary-dark">تكريم مركز اعداد القادة بمدرسة جمال عبد الناصر</h5>
+                        <p class="modern-desc">لحصولهم على المركز الأول على مستوى مديرية التربية و التعليم بالأسكندرية</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
+</section>
+
+<section class="manager-inspection py-5">
+    <div class="container">
+        
+        <div class="inspection-story-wrapper">
+            
+            <div class="inspection-memo-card animate-fade-left">
+                <div class="memo-header">
+                    <span class="memo-tag">المتابعات</span>
+                    <span class="memo-date">التاريخ: مارس ٢٠٢٦</span>
+                </div>
+                <div class="memo-body">
+                    <h2 class="fw-bold text-primary-dark mb-3">زيارة <> <span class="text-gold">لمراجعة الخطط</span></h2>
+                    <p class="inspection-desc">
+                        لحظات فخر واعتزاز تشرفنا فيها بزيارة <> و الاطلاع على سير العمل ومراجعة الخطط التشغيلية للمكتب التنفيذي. 
+                        <br><br>
+                        تم خلال اللقاء عرض ومناقشة ملفات مبادرة المكتب التنفيذي والاستراتيجيات المستقبلية المقترحة وقد أثنى سيادته على دقة التنظيم ووضوح الرؤية مما يمثل دافعاً قوياً لنا للاستمرار في مسيرة التميز والعطاء.
+                    </p>
+                    <div class="signature-line mt-4">فريق المكتب التنفيذي</div>
+                </div>
+            </div>
+
+            <div class="inspection-photo-artifact animate-fade-right">
+                <div class="artifact-frame">
+                    <img src="{{url_for('school.static', filename='media/check.jpg')}}" alt="عرض الخطط على مدير الإدارات" class="artifact-img">
+                    
+                    <div class="artifact-pin"></div>
+                </div>
+            </div>
+
+        </div>
+        
     </div>
 </section>
 
@@ -1470,7 +1924,7 @@
 
     <div class="cinematic-container">
         <div class="main-photo-wrapper">
-            <img src="{{url_for('school.static', filename='media/team2.jpeg')}}" alt="Official School Team">
+            <img src="{{url_for('school.static', filename='media/Team2.jpeg')}}" alt="Official School Team">
         </div>
     </div>
 </section>
