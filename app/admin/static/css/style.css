@@ -1,0 +1,39 @@
+:root {
+    --brand-blue: #325caf;
+    --brand-gold: #e7ac74;
+    --bg-gray: #f4f7f6;
+    --danger: #dc3545;
+    --success: #198754;
+}
+
+body { background-color: var(--bg-gray); padding-top: 80px;}
+
+/* Stats Cards */
+.stat-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+.stat-card:hover { transform: translateY(-5px); }
+.icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* Tables & Tabs */
+.admin-container { margin-top: 30px; }
+.nav-pills .nav-link { color: var(--brand-blue); font-weight: 600; }
+.nav-pills .nav-link.active { background-color: var(--brand-blue); }
+
+.data-table-card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.user-row img { width: 35px; height: 35px; border-radius: 50%; }
+.btn-action { padding: 0.25rem 0.6rem; font-size: 0.85rem; }

@@ -1,70 +1,88 @@
+:root {
+    --brand-blue: #325caf;
+    --brand-blue-hover: #577fd0;
+    --brand-gold: #e7ac74;
+    --bg-white: #ffffff;
+    --bg-light: #f0f2f5;
+    --heart-red: #e0245e;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    background-color: rgb(51, 76, 152);
-    /* Adjust the 80px to match your navbar's actual height */
-    padding-top: 120px; 
+    background-color: rgb(51, 76, 152); /* Keeping your specific rgb background */
+    padding-top: 120px; /* Adjust to match navbar height */
 }
+
+/* Container */
+.result-page {
+    min-height: 80vh;
+    direction: rtl;
+}
+
+/* Post Cards */
 .post-card {
     border: none;
     border-radius: 15px;
     transition: transform 0.2s ease;
     overflow: hidden;
-    background: white;
+    background: var(--bg-white);
 }
+
 .post-card:hover {
     transform: translateY(-5px);
 }
+
 .post-img {
     height: 250px;
     object-fit: cover;
 }
+
 .avatar-sm {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* Interactions */
 .btn-interaction {
-    color: #325caf;
+    color: var(--brand-blue);
     font-weight: 600;
     transition: 0.2s;
 }
+
 .btn-interaction:hover {
-    color: #007bff;
-    background: #f0f2f5;
+    color: var(--brand-blue-hover);
+    background: var(--bg-light);
 }
+
 .liked {
-    color: #e0245e !important;
+    color: var(--heart-red) !important;
 }
+
 .liked i::before {
     content: "\f415"; /* Filled heart icon */
 }
 
-/* Container Background (Optional: Add to your body or a wrapper) */
-.result-page {
-    min-height: 80vh;
-    direction: rtl;
-}
-
 /* Typography & Accents */
 .score-username {
-    color: #e7ac74;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    color: var(--brand-gold);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .divider {
     height: 4px;
     width: 80px;
-    background: #e7ac74;
+    background: var(--brand-gold);
     border-radius: 10px;
     margin-top: 10px;
 }
 
-/* The Stat Cards */
+/* Stat Cards */
 .score-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 2px solid #577fd0;
+    border: 2px solid var(--brand-blue-hover);
     border-radius: 30px;
     padding: 40px 20px;
     text-align: center;
@@ -75,25 +93,25 @@ body {
 .score-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(50, 92, 175, 0.3);
-    border-color: #e7ac74;
+    border-color: var(--brand-gold);
 }
 
 .card-icon {
     font-size: 3rem;
-    color: #e7ac74;
+    color: var(--brand-gold);
     margin-bottom: 15px;
 }
 
 .card-title {
-    color: #ffffff;
+    color: var(--bg-white);
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
 }
 
 .score-display {
-    background: #e7ac74;
-    color: #325caf;
+    background: var(--brand-gold);
+    color: var(--brand-blue);
     border-radius: 20px;
     padding: 10px 30px;
     display: inline-flex;
@@ -126,26 +144,26 @@ body {
 }
 
 .score-btn.primary {
-    background: #e7ac74;
-    color: #325caf;
-    border: 3px solid #e7ac74;
+    background: var(--brand-gold);
+    color: var(--brand-blue);
+    border: 3px solid var(--brand-gold);
 }
 
 .score-btn.secondary {
     background: transparent;
-    color: #e7ac74;
-    border: 3px solid #e7ac74;
+    color: var(--brand-gold);
+    border: 3px solid var(--brand-gold);
 }
 
 .score-btn:hover {
     transform: scale(1.05);
-    background: #325caf;
-    color: #e7ac74;
-    border-color: #577fd0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: var(--brand-blue);
+    color: var(--brand-gold);
+    border-color: var(--brand-blue-hover);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Simple Animations */
+/* Animations */
 .animate-fade-down {
     animation: fadeDown 0.8s ease-out;
 }

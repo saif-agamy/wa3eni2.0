@@ -1,0 +1,125 @@
+:root {
+    --brand-blue: #325caf;
+    --brand-blue-hover: #264685;
+    --brand-gold: #e7ac74;
+    --brand-gold-hover: #d6955a;
+    --light-bg: #f8f9fa;
+    --soft-bg: #f4f7f9;
+}
+
+body {
+    background-color: var(--soft-bg);
+    font-family: 'Inter', sans-serif;
+    padding-top: 40px;
+}
+
+.navbar {
+    background-color: var(--brand-blue) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, #1e3a5f 100%);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 40px;
+}
+
+/* Forms */
+.form-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #444;
+}
+
+.input-group-text {
+    background-color: var(--light-bg);
+    color: var(--brand-blue);
+}
+
+/* Custom Radios */
+.btn-check:checked + .btn-outline-primary {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.btn-check:checked + .btn-outline-warning {
+    background-color: var(--brand-gold);
+    border-color: var(--brand-gold);
+    color: white;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-blue-hover);
+    border-color: var(--brand-blue-hover);
+}
+
+.btn-gold, .submit-btn {
+    background-color: var(--brand-gold);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-gold:hover, .submit-btn:hover {
+    background-color: var(--brand-gold-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 172, 116, 0.4);
+}
+
+/* Cards & Badges */
+.item-card {
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.badge-lost {
+    background-color: #dc3545;
+}
+
+.badge-found {
+    background-color: #198754;
+}
+
+.status-icon {
+    font-size: 1.5rem;
+    color: var(--brand-gold);
+}
+
+/* Utilities */
+.section-title {
+    border-left: 5px solid var(--brand-gold);
+    padding-left: 15px;
+    margin-bottom: 30px;
+    color: var(--brand-blue);
+}
+
+.section-divider {
+    border-bottom: 2px solid #eee;
+    margin: 30px 0;
+    position: relative;
+}

@@ -1,0 +1,45 @@
+:root {
+    --brand-blue: #325caf;
+    --brand-gold: #e7ac74;
+    --brand-gold-dark: #d58e4c;
+    --bg-white: #ffffff;
+}
+
+body {
+    background-color: var(--brand-gold);
+    font-family: 'Inter', sans-serif;
+}
+
+.detail-container {
+    max-width: 800px;
+    margin-top: 30px;
+}
+
+.post-full-img {
+    width: 100%;
+    border-radius: 20px;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+/* Comments */
+.comment-section {
+    background-color: var(--brand-gold-dark);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.avatar-comment {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.comment-bubble {
+    background: var(--brand-blue);
+    color: var(--bg-white); /* Added text color so it's readable on blue */
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: inline-block;
+}

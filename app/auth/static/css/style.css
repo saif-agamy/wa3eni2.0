@@ -67,3 +67,80 @@ body {
     text-decoration: underline;
     font-weight: 500;
 }
+
+/* Ensures the background covers the entire screen */
+body, html {
+    padding-top: 40px;
+    height: 100%;
+    margin: 0;
+    background: #f4f7f6; /* Light professional gray */
+}
+
+.full-page-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.profile-wrapper {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+/* Perfectly Rounded Image */
+.rounded-profile-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; /* Makes it a circle */
+    object-fit: cover;
+    border: 8px solid #e9ecef;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.data-grid {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.data-item {
+    padding: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.value {
+    font-size: 1.2rem;
+    color: #212529;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.school-status {
+    margin-top: 40px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+}

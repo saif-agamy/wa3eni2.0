@@ -1,0 +1,288 @@
+:root {
+    --brand-blue: #325caf;
+    --brand-gold: #e7ac74;
+    --dark-bg: #f8f9fa;
+    --whatsapp-color: #25d366;
+    --bg-white: #ffffff;
+}
+
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-white) 0%, #f1f4f9 100%);
+    padding: 2rem 0;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.2;
+}
+
+/* Custom Buttons */
+.btn-custom {
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(50, 92, 175, 0.2);
+}
+
+.btn-quiz {
+    background-color: var(--brand-blue);
+    color: var(--bg-white) !important;
+    border: 2px solid var(--brand-blue);
+}
+
+.btn-leaderboard {
+    background-color: transparent;
+    color: var(--brand-blue) !important;
+    border: 2px solid var(--brand-blue);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp-color);
+    color: var(--bg-white) !important;
+    border: 2px solid var(--whatsapp-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-whatsapp:hover {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* WhatsApp Card & QR */
+.whatsapp-card {
+    background: var(--bg-white);
+    border: 1px solid #eaeaea;
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.qr-placeholder {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+.alert-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Leaderboard */
+.leaderboard-card {
+    max-width: 600px;
+    margin: auto;
+    background: var(--bg-white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(50, 92, 175, 0.15);
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    background-color: var(--brand-blue);
+    color: var(--bg-white);
+    padding: 30px 20px;
+}
+
+.leaderboard-header h2 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.leaderboard-header p {
+    color: var(--brand-gold);
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.rank-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
+}
+
+.rank-row:last-child {
+    border-bottom: none;
+}
+
+.rank-row:hover {
+    background-color: rgba(50, 92, 175, 0.05);
+}
+
+.rank-first {
+    background-color: rgba(231, 172, 116, 0.15);
+    border-left: 6px solid var(--brand-gold);
+}
+
+.rank-second, .rank-third {
+    background-color: rgba(231, 172, 116, 0.05);
+}
+
+.rank-num {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--brand-blue);
+    width: 30px;
+}
+
+.rank-first .rank-num {
+    color: var(--brand-gold);
+    font-size: 1.5rem;
+}
+
+.rank-name {
+    flex-grow: 1;
+    font-weight: 600;
+    color: #333;
+    margin-left: 15px;
+}
+
+.rank-score {
+    font-weight: bold;
+    color: var(--brand-blue);
+}
+
+.time-spent {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+/* Answer Options */
+.answer-wrapper {
+    width: 100%;
+}
+
+.answer-wrapper input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.answer-rectangle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background-color: var(--bg-white);
+    border: 3px solid #f0f0f0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 200px;
+    width: 100%;
+}
+
+.answer-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--brand-blue);
+    margin-top: 15px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid var(--brand-gold);
+    transition: transform 0.4s ease;
+}
+
+.answer-wrapper:hover .answer-rectangle {
+    border-color: var(--brand-blue);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.answer-wrapper input:checked + .answer-rectangle {
+    background-color: var(--brand-blue);
+    border-color: var(--brand-gold);
+    box-shadow: 0 0 25px rgba(50, 92, 175, 0.4);
+}
+
+.answer-wrapper input:checked + .answer-rectangle .answer-text {
+    color: var(--bg-white);
+}
+
+.answer-wrapper input:checked + .answer-rectangle .triangle {
+    border-bottom-color: var(--bg-white);
+    transform: scale(1.2) rotate(360deg);
+}
+
+/* Join Button */
+.join-btn {
+    text-decoration: none;
+    border: 3px solid transparent;
+    background-color: var(--brand-blue);
+    color: var(--brand-gold);
+    transition: all 0.5s ease;
+    border-radius: 15px;
+    padding: 1rem 3rem;
+    font-size: xx-large;
+    display: inline-block;
+}
+
+.join-btn:hover {
+    transform: scale(1.2);
+    border: 3px solid var(--brand-gold);
+    background-color: transparent;
+    color: var(--brand-blue);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        min-height: auto;
+    }
+    .btn-custom, .whatsapp-card {
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

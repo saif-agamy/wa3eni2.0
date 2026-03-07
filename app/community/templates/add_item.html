@@ -2,63 +2,7 @@
 
 {% block content %}
 <head>
-    <style>
-        :root {
-            --brand-blue: #325caf;
-            --brand-gold: #e7ac74;
-            --soft-bg: #f4f7f9;
-        }
-
-        body { background-color: var(--soft-bg); font-family: 'Inter', sans-serif; padding-top: 40px;}
-
-        .navbar { background-color: var(--brand-blue) !important; }
-
-        .form-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            padding: 40px;
-        }
-
-        .form-label { font-weight: 600; color: #444; }
-
-        /* Custom Radio Styling */
-        .btn-check:checked + .btn-outline-primary {
-            background-color: var(--brand-blue);
-            border-color: var(--brand-blue);
-        }
-
-        .btn-check:checked + .btn-outline-warning {
-            background-color: var(--brand-gold);
-            border-color: var(--brand-gold);
-            color: white;
-        }
-
-        .submit-btn {
-            background-color: var(--brand-gold);
-            border: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            color: white;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #d6955a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 172, 116, 0.4);
-        }
-
-        .input-group-text { background-color: #f8f9fa; color: var(--brand-blue); }
-
-        .section-divider {
-            border-bottom: 2px solid #eee;
-            margin: 30px 0;
-            position: relative;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('community.static', filename='css/lost_style.css')}}">
 </head>
 
 <div class="container">
